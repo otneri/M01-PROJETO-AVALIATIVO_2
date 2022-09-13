@@ -7,7 +7,8 @@ export const temaPrincipal = {
 
     text: {
         white: '#FFFFFF',
-        black: '#000000'
+        black: '#000000',
+        orange: '#FF8818'
     }
 
 }

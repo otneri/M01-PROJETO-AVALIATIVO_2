@@ -10,8 +10,4 @@ export const BotaoStyled =  styled.button `
     padding: .5em;
     width: 7em;
     border-radius: 1em;
-    
-
-    
-    
 `
