@@ -8,5 +8,5 @@ export const SubTitle = ({children}) => {
 }
 
 SubTitle.propTypes = {
-    children : Proptypes.node.isRequired,
+    children : Proptypes.node
 }

@@ -1,19 +1,25 @@
-import {useLocation} from 'react-router-dom'
+// import {useLocation} from 'react-router-dom'
+import { LiStyled, NavStyled, UlStyled, AStyled } from './Navbar.styled';
 
 export const Navbar = () => {
-    const { pathname } = useLocation();
+    // const { pathname } = useLocation();
 
-    <nav>
-        <ul>
-            <li>
-                <link to="">Início</link>
-            </li>
-            <li>
-                <link to="">Dispositivos</link>
-            </li>
-            <li>
-                <link to="">Perfil</link>
-            </li>
-        </ul>
-    </nav>
+   return (
+        <NavStyled>
+            <UlStyled>
+                <LiStyled>
+                    <AStyled href='/'>Inicio</AStyled>
+                </LiStyled>
+                
+                <LiStyled>
+                    <AStyled href='/'>Dispositivos</AStyled >
+                </LiStyled>
+
+                <LiStyled>
+                    <AStyled href='/'>Perfil</AStyled>
+                </LiStyled>
+            </UlStyled>
+            
+        </NavStyled>
+   )
 }

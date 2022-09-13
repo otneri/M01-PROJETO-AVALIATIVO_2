@@ -4,11 +4,10 @@ import { SubTitle } from '../SubTitle/SubTitle'
 
 export const Input = ({children}) => {
 
-
     return(
         <>
             <SubTitle>{children}</SubTitle>
-            <InputStyled></InputStyled>
+            <InputStyled placeholder='Seu e-mail'></InputStyled>
         </>
 
     )
@@ -16,5 +15,5 @@ export const Input = ({children}) => {
 
 
 Input.propTypes = {
-    children : Proptypes.node.isRequired,
+    children : Proptypes.node,
 }
