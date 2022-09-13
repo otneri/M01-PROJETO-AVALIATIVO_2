@@ -6,6 +6,7 @@ export const BotaoStyled =  styled.button `
     color: ${temaPrincipal.text.white};
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 2vh;
     border: none;
     padding: .5em;
     width: 7em;

@@ -3,6 +3,7 @@ import {temaPrincipal} from '../../themes/TemaPrincipal'
 
 export const InputStyled =  styled.input `
     padding: .7em;
+    width: 25em;
     &:hover{
         border-color: ${temaPrincipal.colors.backgroundHeader};
     }
