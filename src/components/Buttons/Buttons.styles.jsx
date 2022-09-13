@@ -10,4 +10,10 @@ export const BotaoStyled =  styled.button `
     padding: .5em;
     width: 7em;
     border-radius: 1em;
+    cursor: pointer;
+
+    &:hover {
+        color: ${temaPrincipal.text.orange};
+        background-color: black;
+    }
 `
