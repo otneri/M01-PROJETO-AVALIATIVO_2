@@ -3,7 +3,7 @@ import {temaPrincipal} from '../../themes/TemaPrincipal'
 
 export const HeaderStyled =  
     styled.header`
-        padding: 1vh;
+        padding: 1vh 4vh;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -15,6 +15,7 @@ export const HeaderStyled =
 export const Div = 
     styled.div`
         display: flex;
+        gap: 1vh;
         `
 export const TitleHeaderStyled =
     styled.h1`

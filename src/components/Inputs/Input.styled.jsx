@@ -3,10 +3,14 @@ import {temaPrincipal} from '../../themes/TemaPrincipal'
 
 export const InputStyled =  styled.input `
     padding: .7em;
-
     &:hover{
         border-color: ${temaPrincipal.colors.backgroundHeader};
     }
 
     
+`
+export const ConteinerInput = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 `

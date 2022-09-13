@@ -1,20 +1,17 @@
+import { Logo } from "../../assets/img"
+import { BotaoLogin } from "../Buttons/Button"
 import { Navbar } from "../Navbar/Navbar"
 import { Div, HeaderStyled,TitleHeaderStyled} from "./Header.styled"
-import Logo from '../../assets/react.svg'
 
 export const Header = () => {
-    
     return (
         
         <HeaderStyled>
             <Div>
-
-                {Logo}
-
-                <TitleHeaderStyled>ConnectLab</TitleHeaderStyled>
-
+                <Logo/>
+                <TitleHeaderStyled>Connect Lab</TitleHeaderStyled>
             </Div>
-            <Navbar/>
+            <BotaoLogin>login</BotaoLogin>
 
         </HeaderStyled>
         

@@ -23,6 +23,10 @@ export const AStyled =
     styled.a`
     color: white;
     text-decoration: none;
+
+    &:hover{
+        color:#2E4052;
+    }
     `
     
 
