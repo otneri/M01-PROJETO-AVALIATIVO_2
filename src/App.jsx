@@ -12,11 +12,11 @@ function App() {
   return (
     
     <>
-      <Header/>
 
+      <Header/>
+      <Global/>
       <BodyStyled>
       
-      <Global/>
       
       <DevicesPage/>
 

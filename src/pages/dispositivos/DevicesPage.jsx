@@ -4,13 +4,13 @@ import { Paper } from "../../components/Paper/Paper"
 import { SubTitle } from "../../components/SubTitle/SubTitle"
 import { Title } from "../../components/Title/Title"
 import { GridListDevices, Paragraph } from "../home/HomePage.styled"
-import { DivDevicespgStld, DivPaperDevice, DivSearchBarStld, SearchBar } from "./DevicesPage.styld"
+import { ConteinerStld, DivDevicespgStld, DivSearchBarStld, SearchBar } from "./DevicesPage.styld"
 
 
 export const DevicesPage = () => {
 
     return(
-        <>
+        <ConteinerStld>
             <DivDevicespgStld>
                 <Title>Dispositivos</Title>
                 
@@ -58,7 +58,7 @@ export const DevicesPage = () => {
 
             </GridListDevices>
             
-        </>
+        </ConteinerStld>
 
         
     )
