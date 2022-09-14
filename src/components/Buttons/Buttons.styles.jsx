@@ -7,6 +7,7 @@ export const BotaoStyled =  styled.button `
     text-transform: uppercase;
     font-weight: bold;
     font-size: 2vh;
+    align-items: center;
     border: none;
     padding: .5em;
     width: 7em;
@@ -33,4 +34,11 @@ export const BotaoStyledLogin =  styled.button `
         color: ${temaPrincipal.text.orange};
         background-color: #2e4052b0;
     }
+`
+
+export const BotaoLinkStiled = styled.a`
+    cursor: pointer;
+    margin-top: 1em;
+    text-decoration: underline;
+    color: ${temaPrincipal.text.orangedark};
 `
