@@ -1,5 +1,8 @@
-import {PaperStyled} from './Paper.styled'
+import {PaperStyled, Comodos, DivPaperDeviceStyled} from './Paper.styled'
+import {BotaoOnOff} from '../Buttons/Button'
 import Proptypes from 'prop-types'
+import { Logo } from '../../assets/img'
+import { Paragraph } from '../../pages/home/HomePage.styled'
 
 export const Paper = ({children}) => {
     return (
@@ -13,6 +16,31 @@ export const PaperListDevices =  ({children}) => {
         <>{children}</>
     )
 }
+
+export const PaperDevice = () => {
+
+    return (
+
+        
+        <Paper>
+            <DivPaperDeviceStyled>
+                <Logo/>
+                <div>
+                    <Paragraph>Lâmpada</Paragraph>
+                    <Comodos>
+                        <p>Casa</p> {`-`}
+                        <p>Quarto</p> {`-`}
+                        <p>ON</p>
+                    </Comodos>
+                </div>
+                <BotaoOnOff>On</BotaoOnOff>
+            </DivPaperDeviceStyled>
+        </Paper>
+
+    )
+
+} 
+
 
 Paper.propTypes = {
     children : Proptypes.node.isRequired,

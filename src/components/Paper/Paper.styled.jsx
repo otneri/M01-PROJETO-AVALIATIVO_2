@@ -13,3 +13,21 @@ export const PaperStyled =  styled.section `
     padding: 1em;
     
 `
+
+export const Comodos = styled.div`
+    color: ${temaPrincipal.text.grey};
+    display: flex;
+    font-size: smaller;
+    gap: .3em;
+`
+
+
+
+
+
+export const DivPaperDeviceStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1em;
+`

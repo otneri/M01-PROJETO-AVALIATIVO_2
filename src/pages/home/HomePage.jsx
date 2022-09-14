@@ -1,9 +1,7 @@
-
-import { Logo } from "../../assets/img"
-import { Botao, BotaoOnOff } from "../../components/Buttons/Button"
-import { Paper } from "../../components/Paper/Paper"
+import { BotaoFiltroDevice } from "../../components/Buttons/Button"
+import { Paper, PaperDevice } from "../../components/Paper/Paper"
 import { Title } from "../../components/Title/Title"
-import { HomeStyled, Paragraph, SubParagraph, GridListDevices, Comodos, DivPaperDeviceStyled } from "./HomePage.styled"
+import { HomeStyled, Pparagraph, SubParagraph, Paragraph, BotoesFiltroDevices, GridListDevices } from "./HomePage.styled"
 
 
 export const HomePage = () => {
@@ -14,92 +12,26 @@ export const HomePage = () => {
                 <Title>16° C</Title>
                 <Paragraph>Pato Branco, PR</Paragraph>
                 <SubParagraph>
-                    <p>Sensação térmica: 15ºC</p>
-                    <p>Precipitação: 0mm</p>
-                    <p>Chance de chuva: 0%</p>
+                    <Pparagraph>Sensação térmica: 15ºC</Pparagraph>
+                    <Pparagraph>Precipitação: 0mm</Pparagraph>
+                    <Pparagraph>Chance de chuva: 0%</Pparagraph>
                 </SubParagraph>
             </Paper>
 
-            <Botao/>
-            <GridListDevices>
-                <Paper>
-                    <DivPaperDeviceStyled>
-                        <Logo/>
-                        <div>
-                            <Paragraph>Lâmpada</Paragraph>
-                            <Comodos>
-                                <p>Casa</p> {`-`}
-                                <p>Quarto</p> {`-`}
-                                <p>ON</p>
-                            </Comodos>
-                        </div>
-                        <BotaoOnOff>On</BotaoOnOff>
-                    </DivPaperDeviceStyled>
-                </Paper>
-                
+            <BotoesFiltroDevices>
+                <BotaoFiltroDevice>Todos</BotaoFiltroDevice>
+                <BotaoFiltroDevice>Casa</BotaoFiltroDevice>
+                <BotaoFiltroDevice>Escritório</BotaoFiltroDevice>
+            </BotoesFiltroDevices>
 
-                <Paper>
-                    <DivPaperDeviceStyled>
-                        <Logo/>
-                        <div>
-                            <Paragraph>Lâmpada</Paragraph>
-                            <Comodos>
-                                <p>Casa</p> {`-`}
-                                <p>Quarto</p> {`-`}
-                                <p>ON</p>
-                            </Comodos>
-                        </div>
-                        <BotaoOnOff>On</BotaoOnOff>
-                    </DivPaperDeviceStyled>
-                </Paper>
-
-                <Paper>
-                    <DivPaperDeviceStyled>
-                        <Logo/>
-                        <div>
-                            <Paragraph>Lâmpada</Paragraph>
-                            <Comodos>
-                                <p>Casa</p> {`-`}
-                                <p>Quarto</p> {`-`}
-                                <p>ON</p>
-                            </Comodos>
-                        </div>
-                        <BotaoOnOff>On</BotaoOnOff>
-                    </DivPaperDeviceStyled>
-                </Paper>
-
-                <Paper>
-                    <DivPaperDeviceStyled>
-                        <Logo/>
-                        <div>
-                            <Paragraph>Lâmpada</Paragraph>
-                            <Comodos>
-                                <p>Casa</p> {`-`}
-                                <p>Quarto</p> {`-`}
-                                <p>ON</p>
-                            </Comodos>
-                        </div>
-                        <BotaoOnOff>On</BotaoOnOff>
-                    </DivPaperDeviceStyled>
-                </Paper>
-                <Paper>
-                    <DivPaperDeviceStyled>
-                        <Logo/>
-                        <div>
-                            <Paragraph>Lâmpada</Paragraph>
-                            <Comodos>
-                                <p>Casa</p> {`-`}
-                                <p>Quarto</p> {`-`}
-                                <p>ON</p>
-                            </Comodos>
-                        </div>
-                        <BotaoOnOff>On</BotaoOnOff>
-                    </DivPaperDeviceStyled>
-                </Paper>
-
-            </GridListDevices>
-
-        
+           <GridListDevices>
+                <PaperDevice/>
+                <PaperDevice/>
+                <PaperDevice/>
+                <PaperDevice/>
+                <PaperDevice/>
+                <PaperDevice/>
+           </GridListDevices>
         </HomeStyled>
     )
 }

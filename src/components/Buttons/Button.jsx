@@ -1,4 +1,4 @@
-import {BotaoLinkStiled, BotaoOnOffStyled, BotaoStyled, BotaoStyledLogin } from './Buttons.styles'
+import {BotaoLinkStiled, BotaoOnOffStyled, BotaoStyled, BotaoStyledLogin, BotaoFiltroDeviceStld } from './Buttons.styles'
 
 import Proptypes from 'prop-types'
 
@@ -25,10 +25,7 @@ export const BotaoOnOff = ({children}) => {
     
     return (
         <BotaoOnOffStyled >{children}</BotaoOnOffStyled>
-
-    )
-
-    
+    )   
 }
 
 export const BotaoLinkPaper = ({children}) => {
@@ -38,6 +35,17 @@ export const BotaoLinkPaper = ({children}) => {
 
     )
 }
+
+export const BotaoFiltroDevice = ({children}) => {
+    
+    return (
+        <BotaoFiltroDeviceStld>{children}</BotaoFiltroDeviceStld>
+
+    )
+}
+
+
+
 
 Botao.propTypes = {
     children : Proptypes.node.isRequired,
@@ -57,4 +65,8 @@ BotaoLinkPaper.propTypes = {
 BotaoOnOff.propTypes = {
     children : Proptypes.node.isRequired,
 
+}
+
+BotaoFiltroDevice.propTypes = {
+    children : Proptypes.node.isRequired,
 }

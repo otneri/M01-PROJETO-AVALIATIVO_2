@@ -13,29 +13,27 @@ export const Paragraph = styled.p`
     text-align: center;
     
 `
-export const SubParagraph = styled.p`
+export const SubParagraph = styled.div`
     color: ${temaPrincipal.text.grey};
     display: flex;
     gap: 1em;
 `
 
-export const Comodos = styled.p`
+export const Pparagraph = styled.p`
     color: ${temaPrincipal.text.grey};
     display: flex;
-    font-size: smaller;
-    gap: .3em;
 `
+
+export const BotoesFiltroDevices = styled.div`
+    margin: 2em 0em;
+    
+
+`
+
 
 export const GridListDevices = styled.section`
     display: grid;
-    background-color: green;
-    grid-template-columns: 5fr 5fr 5fr;
+    grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 2fr 2fr 2fr;
     grid-gap: 1em;
-`
-export const DivPaperDeviceStyled = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1em;
 `

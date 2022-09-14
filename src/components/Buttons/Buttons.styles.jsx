@@ -51,3 +51,23 @@ export const BotaoOnOffStyled = styled.button`
     padding: 1vh;
     text-transform: uppercase;
 `
+export const BotaoFiltroDeviceStld = styled.button`
+    padding: .5em;
+    margin-right:1em ;
+    border-radius: .5em;
+    background-color: transparent;
+    border-color: ${temaPrincipal.text.orange};
+    border-width: .01em;
+    border-style: solid;
+    color: ${temaPrincipal.text.orange};
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #F0B27A;
+        color: ${temaPrincipal.text.white};
+        font-weight: bold;
+
+    }
+`
