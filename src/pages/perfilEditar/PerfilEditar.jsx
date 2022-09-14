@@ -2,18 +2,17 @@ import {Form} from '../../components/Forms/Form'
 import {Paper} from '../../components/Paper/Paper'
 import {Title} from '../../components/Title/Title'
 import {Botao, BotaoLinkPaper} from '../../components/Buttons/Button'
-import { CadastroStyle } from './Cadastro.styled'
+import { PerfilEditarStyled } from './PerfilEditar.styled'
 
-export const Cadastro = () => {
+export const EditarPerfilPage = () => {
     return (
-        <CadastroStyle>
-
+        <PerfilEditarStyled>
             <Paper>
-                <Title>Cadastrar</Title>
+                <Title>Meu perfil</Title>
                 <Form/>
-                <Botao>Cadastrar</Botao>
-                <BotaoLinkPaper href='/'>Login</BotaoLinkPaper>
+                <Botao>Salvar</Botao>
+                <BotaoLinkPaper href='/'>Cancelar</BotaoLinkPaper>
             </Paper>
-        </CadastroStyle>
+        </PerfilEditarStyled>
     )
 }
