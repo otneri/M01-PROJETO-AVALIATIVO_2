@@ -9,7 +9,8 @@ export const temaPrincipal = {
         white: '#FFFFFF',
         black: '#000000',
         orange: '#FF8818',
-        orangedark: '#CA6F1E'
+        orangedark: '#CA6F1E',
+        grey: '#5D6D7E'
     }
 
 }

@@ -7,6 +7,17 @@ export const Paper = ({children}) => {
     )
 }
 
+
+export const PaperListDevices =  ({children}) => {
+    return (
+        <>{children}</>
+    )
+}
+
 Paper.propTypes = {
+    children : Proptypes.node.isRequired,
+}
+
+PaperListDevices.propTypes = {
     children : Proptypes.node.isRequired,
 }
