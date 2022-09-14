@@ -2,8 +2,7 @@
 // import {BrowserRouter} from 'react-router-dom'
 // import { Rotas } from "./routes";
 import { Header } from "./components/Header/Header";
-import { HomePage } from "./pages/home/HomePage";
-import { EditarPerfilPage } from "./pages/perfilEditar/PerfilEditar";
+import { DevicesPage } from "./pages/dispositivos/DevicesPage";
 import { Global } from "./themes";
 import { BodyStyled } from "./themes/ConfiguracaoGeral.styles";
 
@@ -13,15 +12,15 @@ function App() {
   return (
     
     <>
-    <Header/>
+      <Header/>
 
-    <BodyStyled>
-    
-    <Global/>
-    
-    <HomePage/>
+      <BodyStyled>
+      
+      <Global/>
+      
+      <DevicesPage/>
 
-    </BodyStyled>
+      </BodyStyled>
     
     </>
 
