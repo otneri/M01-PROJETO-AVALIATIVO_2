@@ -1,4 +1,4 @@
-import {BotaoLinkStiled, BotaoStyled, BotaoStyledLogin } from './Buttons.styles'
+import {BotaoLinkStiled, BotaoOnOffStyled, BotaoStyled, BotaoStyledLogin } from './Buttons.styles'
 
 import Proptypes from 'prop-types'
 
@@ -15,6 +15,16 @@ export const BotaoLogin = ({children}) => {
     
     return (
         <BotaoStyledLogin >{children}</BotaoStyledLogin>
+
+    )
+
+    
+}
+
+export const BotaoOnOff = ({children}) => {
+    
+    return (
+        <BotaoOnOffStyled >{children}</BotaoOnOffStyled>
 
     )
 
@@ -39,6 +49,12 @@ BotaoLogin.propTypes = {
 }
 
 BotaoLinkPaper.propTypes = {
+    children : Proptypes.node.isRequired,
+
+}
+
+
+BotaoOnOff.propTypes = {
     children : Proptypes.node.isRequired,
 
 }

@@ -1,9 +1,9 @@
 
 import { Logo } from "../../assets/img"
-import { Botao } from "../../components/Buttons/Button"
+import { Botao, BotaoOnOff } from "../../components/Buttons/Button"
 import { Paper } from "../../components/Paper/Paper"
 import { Title } from "../../components/Title/Title"
-import { HomeStyled, Paragraph, SubParagraph, GridListDevices, Comodos } from "./HomePage.styled"
+import { HomeStyled, Paragraph, SubParagraph, GridListDevices, Comodos, DivPaperDeviceStyled } from "./HomePage.styled"
 
 
 export const HomePage = () => {
@@ -23,20 +23,80 @@ export const HomePage = () => {
             <Botao/>
             <GridListDevices>
                 <Paper>
-                    <Logo/>
-                    <Paragraph>Lâmpada</Paragraph>
-                    <Comodos>
-                        <p>Casa</p> {`-`}
-                        <p>Quarto</p> {`-`}
-                        <p>ON</p>
-                    </Comodos>
+                    <DivPaperDeviceStyled>
+                        <Logo/>
+                        <div>
+                            <Paragraph>Lâmpada</Paragraph>
+                            <Comodos>
+                                <p>Casa</p> {`-`}
+                                <p>Quarto</p> {`-`}
+                                <p>ON</p>
+                            </Comodos>
+                        </div>
+                        <BotaoOnOff>On</BotaoOnOff>
+                    </DivPaperDeviceStyled>
                 </Paper>
-                <Paper/>
-                <Paper/>
-                <Paper/>
-                <Paper/>
-                <Paper/>
-                <Paper/>
+                
+
+                <Paper>
+                    <DivPaperDeviceStyled>
+                        <Logo/>
+                        <div>
+                            <Paragraph>Lâmpada</Paragraph>
+                            <Comodos>
+                                <p>Casa</p> {`-`}
+                                <p>Quarto</p> {`-`}
+                                <p>ON</p>
+                            </Comodos>
+                        </div>
+                        <BotaoOnOff>On</BotaoOnOff>
+                    </DivPaperDeviceStyled>
+                </Paper>
+
+                <Paper>
+                    <DivPaperDeviceStyled>
+                        <Logo/>
+                        <div>
+                            <Paragraph>Lâmpada</Paragraph>
+                            <Comodos>
+                                <p>Casa</p> {`-`}
+                                <p>Quarto</p> {`-`}
+                                <p>ON</p>
+                            </Comodos>
+                        </div>
+                        <BotaoOnOff>On</BotaoOnOff>
+                    </DivPaperDeviceStyled>
+                </Paper>
+
+                <Paper>
+                    <DivPaperDeviceStyled>
+                        <Logo/>
+                        <div>
+                            <Paragraph>Lâmpada</Paragraph>
+                            <Comodos>
+                                <p>Casa</p> {`-`}
+                                <p>Quarto</p> {`-`}
+                                <p>ON</p>
+                            </Comodos>
+                        </div>
+                        <BotaoOnOff>On</BotaoOnOff>
+                    </DivPaperDeviceStyled>
+                </Paper>
+                <Paper>
+                    <DivPaperDeviceStyled>
+                        <Logo/>
+                        <div>
+                            <Paragraph>Lâmpada</Paragraph>
+                            <Comodos>
+                                <p>Casa</p> {`-`}
+                                <p>Quarto</p> {`-`}
+                                <p>ON</p>
+                            </Comodos>
+                        </div>
+                        <BotaoOnOff>On</BotaoOnOff>
+                    </DivPaperDeviceStyled>
+                </Paper>
+
             </GridListDevices>
 
         

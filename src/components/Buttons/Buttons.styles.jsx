@@ -42,3 +42,12 @@ export const BotaoLinkStiled = styled.a`
     text-decoration: underline;
     color: ${temaPrincipal.text.orangedark};
 `
+
+export const BotaoOnOffStyled = styled.button`
+    border-radius:1em;
+    background-color: ${temaPrincipal.colors.successBackground};
+    border: none;
+    cursor: pointer;
+    padding: 1vh;
+    text-transform: uppercase;
+`
