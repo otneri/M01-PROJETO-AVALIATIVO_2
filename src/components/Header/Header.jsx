@@ -1,5 +1,5 @@
 import { Logo } from "../../assets/img"
-import { BotaoLogin } from "../Buttons/Button"
+import { BotaoLogin } from "../Buttons/Botao"
 
 import { Div, HeaderStyled,TitleHeaderStyled} from "./Header.styled"
 
