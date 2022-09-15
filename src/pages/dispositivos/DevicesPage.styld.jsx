@@ -32,3 +32,10 @@ export const DivSearchBarStld = styled.div`
 export const DivPaperDevice = styled.div`
     padding: 1em 2em;
 `
+
+
+export const DivButtonsModalStld = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 10em;
+`

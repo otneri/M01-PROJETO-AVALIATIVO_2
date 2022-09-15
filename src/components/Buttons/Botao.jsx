@@ -37,7 +37,7 @@ export const BotaoFiltroDevice = ({ children, handleClick }) => {
 
 Botao.propTypes = {
   children: Proptypes.node.isRequired,
-  handleClick: Proptypes.func.isRequired,
+  handleClick: Proptypes.func,
   cordefundo: Proptypes.string,
 };
 
