@@ -1,6 +1,6 @@
 import {Paper} from '../../components/Paper/Paper'
 import {Title} from '../../components/Title/Title'
-import {Botao, BotaoLinkPaper} from '../../components/Buttons/Button'
+import {Botao, BotaoLinkPaper} from '../../components/Buttons/Botao'
 import { ConteinerProfileStyled, DivPerfil, PerfilPageStyle, SubDivPerfil, TextoMaior, TextoMenor, Line } from './PerfilPage.styled'
 import { Logo } from '../../assets/img'
 
