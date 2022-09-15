@@ -10,7 +10,7 @@ import Proptypes from "prop-types";
 
 export const Botao = ({ children, handleClick, cordefundo }) => {
   return (
-    <BotaoStyled onClick={handleClick} bg={cordefundo}>
+    <BotaoStyled onClick={handleClick} >
       {children}
     </BotaoStyled>
   );

@@ -13,11 +13,6 @@ export const Paragraph = styled.p`
     text-align: center;
     
 `
-export const SubParagraph = styled.div`
-    color: ${temaPrincipal.text.grey};
-    display: flex;
-    gap: 1em;
-`
 
 export const Pparagraph = styled.p`
     color: ${temaPrincipal.text.grey};
@@ -36,4 +31,10 @@ export const GridListDevices = styled.section`
     grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 2fr 2fr 2fr;
     grid-gap: 1em;
+`
+
+export const DivBotaoPowerstld = styled.div`
+    display: flex;
+    align-items: center;
+    gap:2em ;
 `

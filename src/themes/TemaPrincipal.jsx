@@ -11,7 +11,8 @@ export const temaPrincipal = {
         black: '#000000',
         orange: '#FF8818',
         orangedark: '#CA6F1E',
-        grey: '#5D6D7E'
+        grey: '#5D6D7E',
+        boldSize: 'bold'
     }
 
 }

@@ -1,4 +1,4 @@
-import {SubTitleStyled} from './SubTitle.styled'
+import {SubTitleStyled , SubParagraphStld} from './SubTitle.styled'
 import Proptypes from 'prop-types'
 
 export const SubTitle = ({children}) => {
@@ -7,6 +7,17 @@ export const SubTitle = ({children}) => {
     )
 }
 
+export const SubParagraph = ({children, size}) => {
+    return (
+        <SubParagraphStld  sz={size}>{children}</SubParagraphStld>
+    )
+}
+
 SubTitle.propTypes = {
     children : Proptypes.node
+}
+
+SubParagraph.propTypes = {
+    children : Proptypes.node,
+    size: Proptypes.string
 }

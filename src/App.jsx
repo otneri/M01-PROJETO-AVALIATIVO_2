@@ -21,7 +21,7 @@ function App() {
       <Global/>
       <BodyStyled>
       
-      <DevicesPage/>
+      <HomePage/>
       
       
       

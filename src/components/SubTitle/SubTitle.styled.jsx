@@ -6,3 +6,10 @@ export const SubTitleStyled =  styled.h2 `
     font-weight: bold;
     font-size: medium;
 `
+
+export const SubParagraphStld = styled.div`
+    color: ${temaPrincipal.text.grey};
+    display: flex;
+    gap: 1em;
+    font-size:  ${(props) => props.sz === 'bold'? `${temaPrincipal.text.boldSize}` : ''};
+`

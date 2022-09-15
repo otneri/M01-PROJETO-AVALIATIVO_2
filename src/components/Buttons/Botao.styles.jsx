@@ -2,8 +2,13 @@ import styled from "styled-components";
 import { temaPrincipal } from "../../themes/TemaPrincipal";
 
 export const BotaoStyled = styled.button`
-  background-color: ${(props) =>
-    props.bg === "primario" ? temaPrincipal.colors.backgroundHeader : "red"};
+
+/* como add condicional */
+  /* background-color: ${(props) =>
+    props.bg === "primario" ? temaPrincipal.colors.backgroundHeader : "red"}; */
+
+
+  background-color: ${temaPrincipal.colors.backgroundHeader};
   color: ${temaPrincipal.text.white};
   text-transform: uppercase;
   font-weight: bold;
