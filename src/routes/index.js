@@ -1,1 +1,1 @@
-export {Rotas} from './Routes'
+export {Rotas} from './Router'
