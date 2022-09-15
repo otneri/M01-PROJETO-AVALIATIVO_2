@@ -4,7 +4,7 @@ import { Rotas } from "./routes";
 import { Header } from "./components/Header/Header";
 import { BodyStyled } from "./themes/ConfiguracaoGeral.styles";
 import Modal from "react-modal";
-import { AuthProvider } from "contexts/Autenticação";
+import { AuthProvider } from "./contexts/index";
 
 Modal.setAppElement("#root");
 
