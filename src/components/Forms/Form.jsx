@@ -14,6 +14,7 @@ export const Form = () => {
           <Input>CEP</Input>
           <Input>Logradouro/Endereço</Input>
           <Input>Cidade</Input>
+          <Input>Estado</Input>
           <Input>Complemento</Input>
           <Input>Número</Input>
           <Input>Bairro</Input>

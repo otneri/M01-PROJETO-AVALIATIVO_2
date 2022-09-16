@@ -16,44 +16,24 @@ import Modal from "react-modal";
 import { temaPrincipal } from "../../themes";
 import { Input } from "../../components/Inputs/Input";
 import { Select } from "../../components/SelectInput/Select";
+import { ModalDevice } from "../../components/Modal/ModalDevice";
+
+
 
 export const DevicesPage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  
   const handleOpenModal = () => {
     setIsOpen(true);
   };
-
+  
   const handleCloseModal = () => {
     setIsOpen(false);
-  };
-
-  const customStyle = {
-    content: {
-      top: "35%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      width: "60%",
-      transform: "translate(-40%, -10%)",
-      background: `${temaPrincipal.colors.backgroundPrincipal}`,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexDirection: "column",
-      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-      borderRadius: "10px",
-      gap: '1em'
-    },
   };
   
   return (
     <ConteinerStld>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={handleCloseModal}
-        style={customStyle}
+      <ModalDevice modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal}
       >
         <Title>Lâmpada Inteligente</Title>
 
@@ -64,7 +44,7 @@ export const DevicesPage = () => {
           <BotaoLogin handleClick={() => {}}>confirmar</BotaoLogin>
           <Botao handleClick={handleCloseModal}>cancelar</Botao>
         </DivButtonsModalStld>
-      </Modal>
+      </ModalDevice>
       <DivDevicespgStld>
         <Title>Dispositivos</Title>
 

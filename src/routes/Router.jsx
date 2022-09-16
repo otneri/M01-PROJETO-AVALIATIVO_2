@@ -16,9 +16,9 @@ export const Rotas = () => {
       <Route
         path="/Home"
         element={
-          <RotaPrivada>
+          // <RotaPrivada>
             <HomePage />
-          </RotaPrivada>
+          // </RotaPrivada>
         }
       />
       ;
@@ -43,9 +43,9 @@ export const Rotas = () => {
       <Route
         path="/devices"
         element={
-          <RotaPrivada>
+          // <RotaPrivada>
             <DevicesPage />
-          </RotaPrivada>
+          // </RotaPrivada>
         }
       />
       <Route path="*" element={<Navigate to="/" replace={true} />} />

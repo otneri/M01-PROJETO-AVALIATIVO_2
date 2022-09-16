@@ -5,22 +5,26 @@ import { Header } from "./components/Header/Header";
 import { BodyStyled } from "./themes/ConfiguracaoGeral.styles";
 import Modal from "react-modal";
 import { AuthProvider } from "./contexts/index";
+import { ThemeProvider } from "styled-components";
+import { temaPrincipal } from "./themes";
 
 Modal.setAppElement("#root");
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Header />
-        <Global />
-          <BodyStyled>
-            <main>
-              <Rotas/>
-            </main>
-          </BodyStyled>
-        <Global />
-      </AuthProvider>
+      <ThemeProvider theme={temaPrincipal}>
+        <AuthProvider>
+          <Header />
+          <Global />
+            <BodyStyled>
+              <main>
+                <Rotas/>
+              </main>
+            </BodyStyled>
+          <Global />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
