@@ -6,12 +6,11 @@ export const ContextAuth = createContext();
 export const AuthProvider = ({ children }) => {
   const [usuario, setUsuario] = useState({
     nome: "",
-    senha: "",
   });
 
   const handleLogin = ({ email, senha }) => {
     console.log(email, senha);
-    setUsuario({ nome: "Otavio", email: "otavioneri@gmail" });
+    setUsuario({ nome: "Otavio" });
   };
 
   useEffect(() => {
@@ -26,7 +25,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const handleLogout = () => {
-    setUsuario(null);
+    localStorage.removeItem("fullName");
+    setUsuario({
+      nome:''
+    })
   };
 
   return (
