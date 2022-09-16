@@ -7,11 +7,13 @@ import { CadastroStyle } from './Cadastro.styled'
 export const Cadastro = () => {
     return (
         <CadastroStyle>
+            
             <Paper>
                 <Title>Cadastrar</Title>
-                <Form/>
-                <Botao type='submit' handleClick={(console.log('Clicou'))}>Cadastrar</Botao>
-                <BotaoLinkPaper href='/'>Login</BotaoLinkPaper>
+                <Form>
+                
+                </Form>
+                
             </Paper>
         </CadastroStyle>
     )
