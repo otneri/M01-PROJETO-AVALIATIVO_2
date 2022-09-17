@@ -7,6 +7,7 @@ export const InputStyled =  styled.input `
     &:hover{
         border-color: ${temaPrincipal.colors.backgroundHeader};
     }
+    border-style: solid;
 
     
 `
@@ -14,4 +15,10 @@ export const ConteinerInput = styled.div `
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+`
+export const InputErrorStyled =  styled.input `
+    padding: .7em;
+    width: 25em;
+    border-color: ${temaPrincipal.colors.error};
+    border-style: solid;
 `

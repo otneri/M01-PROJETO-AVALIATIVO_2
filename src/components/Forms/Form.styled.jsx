@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { temaPrincipal } from '../../themes/TemaPrincipal'
 
 export const FormStyle = styled.form `
     display: grid;
@@ -7,3 +8,10 @@ export const FormStyle = styled.form `
     margin: 2em 0em;
     
     `
+
+
+export const SpanError = styled.span `
+    color: ${temaPrincipal.colors.error};
+`
+    
+    

@@ -1,27 +1,18 @@
-import {InputStyled, ConteinerInput} from './Input.styled'
-import Proptypes from 'prop-types'
-import { SubTitle } from '../SubTitle/SubTitle'
-import { useForm } from 'react-hook-form'
+import {InputErrorStyled, InputStyled} from './Input.styled'
+import {forwardRef} from 'react'
 
-export const Input = ({children, placeholder, type, onChange, name, registro }) => {
-    const {register , formState} = useForm();
-    const requiredErrors = formState.errors.name?.type  === 'required';
-
-    return(
-        <ConteinerInput>
-            <SubTitle>{children}</SubTitle>
-            <InputStyled registro={register} placeholder={placeholder} type={type} onChange={onChange} {...register ('name', {required: true})}/>
-        {requiredErrors && <span>Campo obrigatório!</span>}
-        </ConteinerInput>
-    )
-}
+export const Input = forwardRef((props, ref) => 
+   
+    <InputStyled {...props} ref={ref}/>
+);
 
 
-Input.propTypes = {
-    children : Proptypes.node,
-    placeholder: Proptypes.string,
-    type: Proptypes.string,
-    onChange: Proptypes.func,
-    name: Proptypes.node,
-    registro: Proptypes.string,
-}
+Input.displayName = 'Input';
+
+export const InputError = forwardRef((props, ref) => 
+   
+    <InputErrorStyled {...props} ref={ref}/>
+);
+
+
+InputError.displayName = 'Input';

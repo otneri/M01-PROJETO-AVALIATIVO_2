@@ -3,7 +3,8 @@ export const temaPrincipal = {
         backgroundHeader : '#FF8818',
         backgroundPrincipal: '#D9D9D9',
         cardBackground : '#ffffff',
-        successBackground: '#66BB6A'
+        successBackground: '#66BB6A',
+        error: '#ff0000'
     },
 
     text: {
