@@ -6,26 +6,27 @@ import { ConteinerInput, InputErrorStyled } from "../../components/Inputs/Input.
 import { SubTitle } from "../../components/SubTitle/SubTitle";
 import {PhoneNumber} from '../../utils/validations'
 import * as yup from 'yup'
+import { yupResolver } from "@hookform/resolvers/yup";
 
-const validationSchema = yup.object({
-  fullName: yup.string().required(),
-  emaill: yup.string().email().required(),
-  photoURL: yup.string(),
-  phone: yup.matches(PhoneNumber),
-  password: yup.string().required(),
-  passwordConfirm: yup.string().required(),
-  zipCode: yup.string().required(),
-  street: yup.string().required(),
-  city: yup.string().required(),
-  state: yup.string().required(),
-  complement: yup.string().required(),
-  number: yup.string().required(),
-  neighborhood: yup.string().required(),
-})
+  const validationSchema = yup.object({
+    fullName: yup.string().required(),
+    emaill: yup.string().email(),
+    photoURL: yup.string(),
+    phone: yup.string().required(),
+    password: yup.string().required(),
+    passwordConfirm: yup.string().required().oneOf([yup.ref('password'), null],'Senha incompatível'),
+    zipCode: yup.string().required(),
+    street: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    complement: yup.string().required(),
+    number: yup.string().required(),
+    neighborhood: yup.string().required(),
+  })
 
 
 export const Form = () => {
-  const {  handleSubmit, register, formState : {errors} } = useForm();
+  const {  handleSubmit, register, formState : {errors} } = useForm({resolver: yupResolver(validationSchema)});
   
   
   
@@ -33,18 +34,22 @@ export const Form = () => {
     console.log(valores);
   }
 
-  const requiredErrors =  errors.name?.type  === 'required';
 
-  const passwordErrors = (name) =>
-    name.password?.type !== name.passwordConfirm?.type? errors.passwordConfirm.type:'' ;
+  
+  
+  function onError  (erro) {
+    console.log('erro: ' , erro);
+
+  }
+
   
   
   return (
     <div>
-      <FormStyle onSubmit={handleSubmit(handleConfirmarForm)}>
+      <FormStyle onSubmit={handleSubmit(handleConfirmarForm, onError)}>
         <ConteinerInput>
         <SubTitle>Nome completo:  </SubTitle>
-        {requiredErrors? <InputErrorStyled
+        {errors?.fullName?.type? <InputErrorStyled
         {...register ('fullName',{required:true })} 
         placeholder="Seu nome aqui"
         id={'nome'}/>:
@@ -52,71 +57,71 @@ export const Form = () => {
           placeholder="Seu nome aqui"
           id={'nome'}
           />}
+
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.fullName?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
-        <SubTitle>E-mail </SubTitle>
-        {requiredErrors? <InputErrorStyled
-        {...register ('email',{required:true})} 
-        placeholder="Seu e-mail aqui"
+        <SubTitle>E-mail:</SubTitle>
+        {errors?.email?.type? <InputErrorStyled
+        {...register ('email',{required:true })} 
+        placeholder="exemplo@exemplo.com"
         id={'email'}/>:
-          <Input {...register ('fullName',{required:true})} 
-          placeholder="Seu e-mail aqui"
+          <Input {...register ('email',{required:true})} 
+          placeholder="Seu nome aqui"
           id={'email'}
           />}
+
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.fullName?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Foto de Perfil </SubTitle>
-        {requiredErrors? <InputErrorStyled
-        {...register ('photoUrl',{required:false})} 
-        placeholder="Adicione uma foto"
-        id={'photo'}/>:
-          <Input {...register ('fullName',{required:true})} 
+        <Input {...register ('photoUrl',{required:true})} 
           placeholder="Adicione uma foto"
           id={'photo'}
-          />}
+          />
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Telefone:</SubTitle>
-        {requiredErrors? <InputErrorStyled
+        {errors?.phone?.type? <InputErrorStyled
         {...register ('phone',{required:true})} 
-        placeholder="Insira um telefone"
-        id={'email'}/>:
+        placeholder="(DDD)912345678"
+        id={'phone'}
+        type='tel'/>:
+        
           <Input {...register ('phone',{required:true})} 
-          placeholder="Insira um telefone"
+          placeholder="(DDD)912345678"
           id={'phone'}
+          type='tel'
           
           />}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.phone?.type && <SpanError>Campo obrigatório! Número inválido!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Senha:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.password?.type? <InputErrorStyled 
         {...register ('password',{required:true})} 
         placeholder="Insira um telefone"
         id={'password'}
         type='password'/>:
-          <Input {...register ('password',{required:true, minLength: 6, validate: })} 
+          <Input {...register ('password',{required:true, minLength: 6 })} 
           placeholder="Insira uma senha"
-          id={'phopassword'}
+          id={'password'}
           type='password'/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.password?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
         
         <ConteinerInput>
         <SubTitle>Confirmar Senha:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.passwordConfirm?.type? <InputErrorStyled 
         {...register ('passwordConfirm',{required:true})} 
         placeholder="Insira um telefone"
         id={'passwordConfirm'}
@@ -126,12 +131,13 @@ export const Form = () => {
           id={'passwordConfirm'}
           type='password'/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.passwordConfirm?.type && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.passwordConfirm?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>CEP:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.zipCode?.type? <InputErrorStyled 
         {...register ('zipCode',{required:true})} 
         placeholder="Digite o CEP aqui"
         id={'CEP'}
@@ -141,12 +147,12 @@ export const Form = () => {
           id={'CEP'}
           />}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.zipCode?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Endereço:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.street?.type? <InputErrorStyled 
         {...register ('street',{required:true})} 
         placeholder="Seu endereço aqui"
         id={'endereco'}/>:
@@ -154,12 +160,12 @@ export const Form = () => {
           placeholder="Seu endereço aqui"
           id={'endereco'}/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.street?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Cidade:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.city?.type? <InputErrorStyled 
         {...register ('city',{required:true})} 
         placeholder="Sua cidade aqui"
         id={'cidade'}/>:
@@ -167,12 +173,12 @@ export const Form = () => {
           placeholder="Sua cidade aqui"
           id={'cidade'}/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.city?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Estado:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.state?.type? <InputErrorStyled 
         {...register ('state',{required:true})} 
         placeholder="Seu estado aqui"
         id={'state'}/>:
@@ -180,25 +186,20 @@ export const Form = () => {
           placeholder="Seu estado aqui"
           id={'state'}/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.state?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Complemento:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
-        {...register ('complement',{required:true})} 
-        placeholder="Seu complemento aqui"
-        id={'complemento'}/>:
           <Input {...register ('complement',{required:true})} 
           placeholder="Seu complemento aqui"
-          id={'complemento'}/>}
+          id={'complemento'}/>
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Número:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.number?.type? <InputErrorStyled 
         {...register ('number',{required:true})} 
         placeholder="Número da casa aqui"
         id={'number'}/>:
@@ -206,12 +207,12 @@ export const Form = () => {
           placeholder="Seu numero aqui"
           id={'number'}/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.number?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
         <SubTitle>Bairro:</SubTitle>
-        {requiredErrors? <InputErrorStyled 
+        {errors?.neighborhood?.type? <InputErrorStyled 
         {...register ('neighborhood',{required:true})} 
         placeholder="Seu bairro aqui"
         id={'neighborhood'}/>:
@@ -219,13 +220,13 @@ export const Form = () => {
           placeholder="Seu bairro aqui"
           id={'neighborhood'}/>}
           
-        {requiredErrors && <SpanError>Campo obrigatório!</SpanError>}
+        {errors?.neighborhood?.type && <SpanError>Campo obrigatório!</SpanError>}
         </ConteinerInput>
 
 
       </FormStyle> 
 
-      <Botao type="submit" handleClick={handleSubmit(handleConfirmarForm)}>
+      <Botao type="submit" handleClick={handleSubmit(handleConfirmarForm, onError)}>
         Cadastrar
       </Botao>
 

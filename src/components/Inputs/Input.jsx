@@ -9,10 +9,12 @@ export const Input = forwardRef((props, ref) =>
 
 Input.displayName = 'Input';
 
-export const InputError = forwardRef((props, ref) => 
+export const InputError = forwardRef( (props, ref) => 
    
     <InputErrorStyled {...props} ref={ref}/>
 );
 
 
 InputError.displayName = 'Input';
+
+

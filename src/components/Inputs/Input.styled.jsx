@@ -21,4 +21,6 @@ export const InputErrorStyled =  styled.input `
     width: 25em;
     border-color: ${temaPrincipal.colors.error};
     border-style: solid;
+
 `
+
