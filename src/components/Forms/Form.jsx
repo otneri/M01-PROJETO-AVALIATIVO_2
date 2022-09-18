@@ -4,15 +4,15 @@ import { useForm } from "react-hook-form";
 import { Botao, BotaoLinkPaper } from "../Buttons/Botao";
 import { ConteinerInput, InputErrorStyled } from "../../components/Inputs/Input.styled";
 import { SubTitle } from "../../components/SubTitle/SubTitle";
-import {PhoneNumber} from '../../utils/validations'
+import {PhoneNumber, FullName} from '../../utils/validations'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 
   const validationSchema = yup.object({
-    fullName: yup.string().required(),
-    emaill: yup.string().email(),
+    fullName: yup.string().min(2, 'Mínimo 2 catactéres').matches(FullName, 'Apenas letras').required('Campo obrigatório'),
+    emaill: yup.string().email('Campo obrigatório'),
     photoURL: yup.string(),
-    phone: yup.string().required(),
+    phone: yup.string().required().matches(PhoneNumber),
     password: yup.string().required(),
     passwordConfirm: yup.string().required().oneOf([yup.ref('password'), null],'Senha incompatível'),
     zipCode: yup.string().required(),
@@ -41,6 +41,7 @@ export const Form = () => {
     console.log('erro: ' , erro);
 
   }
+  
 
   
   
@@ -58,8 +59,8 @@ export const Form = () => {
           id={'nome'}
           />}
 
-          
-        {errors?.fullName?.type && <SpanError>Campo obrigatório!</SpanError>}
+        
+        <SpanError>{errors?.fullName?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -74,7 +75,7 @@ export const Form = () => {
           />}
 
           
-        {errors?.fullName?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.fullName?.type}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -131,8 +132,7 @@ export const Form = () => {
           id={'passwordConfirm'}
           type='password'/>}
           
-        {errors?.passwordConfirm?.type && <SpanError>Campo obrigatório!</SpanError>}
-        {errors?.passwordConfirm?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors.passwordConfirm?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
