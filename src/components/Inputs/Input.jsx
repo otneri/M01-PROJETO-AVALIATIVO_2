@@ -1,5 +1,5 @@
 import {InputErrorStyled, InputStyled} from './Input.styled'
-import {forwardRef} from 'react'
+import { forwardRef} from 'react'
 
 export const Input = forwardRef((props, ref) => 
    
@@ -11,7 +11,7 @@ Input.displayName = 'Input';
 
 export const InputError = forwardRef( (props, ref) => 
    
-    <InputErrorStyled {...props} ref={ref}/>
+    <InputErrorStyled  {...props} ref={ref}/>
 );
 
 

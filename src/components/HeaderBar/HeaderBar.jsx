@@ -1,7 +1,7 @@
 import { Logo } from "../../assets/img"
 import { BotaoLogin } from "../Buttons/Botao"
 
-import { Div, HeaderStyled,TitleHeaderStyled} from "./Header.styled"
+import { Div, HeaderStyled,TitleHeaderStyled} from "./HeaderBar.styled"
 
 export const Header = () => {
     return (

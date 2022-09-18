@@ -1,5 +1,5 @@
 import { Input } from "../Inputs/Input";
-import { FormStyle, SpanError } from "./Form.styled";
+import { FormStyle, SpanError, DivBotoes } from "./Form.styled";
 import { useForm } from "react-hook-form";
 import { Botao, BotaoLinkPaper } from "../Buttons/Botao";
 import { ConteinerInput, InputErrorStyled } from "../../components/Inputs/Input.styled";
@@ -12,16 +12,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
     fullName: yup.string().min(2, 'Mínimo 2 catactéres').matches(FullName, 'Apenas letras').required('Campo obrigatório'),
     emaill: yup.string().email('Campo obrigatório'),
     photoURL: yup.string(),
-    phone: yup.string().required().matches(PhoneNumber),
-    password: yup.string().required(),
-    passwordConfirm: yup.string().required().oneOf([yup.ref('password'), null],'Senha incompatível'),
-    zipCode: yup.string().required(),
-    street: yup.string().required(),
-    city: yup.string().required(),
-    state: yup.string().required(),
-    complement: yup.string().required(),
-    number: yup.string().required(),
-    neighborhood: yup.string().required(),
+    phone: yup.string().required('Campo obrigatório').matches(PhoneNumber),
+    password: yup.string().required('Campo obrigatório'),
+    passwordConfirm: yup.string().required('Campo obrigatório').oneOf([yup.ref('password'), null],'Senha incompatível'),
+    zipCode: yup.string().required('Campo obrigatório'),
+    street: yup.string().required('Campo obrigatório'),
+    city: yup.string().required('Campo obrigatório'),
+    state: yup.string().required('Campo obrigatório'),
+    complement: yup.string(),
+    number: yup.string().required('Campo obrigatório'),
+    neighborhood: yup.string().required('Campo obrigatório'),
   })
 
 
@@ -75,7 +75,7 @@ export const Form = () => {
           />}
 
           
-        <SpanError>{errors?.fullName?.type}</SpanError>
+        <SpanError>{errors?.fullName?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -96,13 +96,13 @@ export const Form = () => {
         type='tel'/>:
         
           <Input {...register ('phone',{required:true})} 
-          placeholder="(DDD)912345678"
+          placeholder="(DDD) 91234-5678"
           id={'phone'}
           type='tel'
           
           />}
           
-        {errors?.phone?.type && <SpanError>Campo obrigatório! Número inválido!</SpanError>}
+        {errors?.phone?.type && <SpanError>Telefone inválido!</SpanError>}
         </ConteinerInput>
 
         <ConteinerInput>
@@ -117,7 +117,7 @@ export const Form = () => {
           id={'password'}
           type='password'/>}
           
-        {errors?.password?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.password?.message}</SpanError>
         </ConteinerInput>
         
         <ConteinerInput>
@@ -147,7 +147,7 @@ export const Form = () => {
           id={'CEP'}
           />}
           
-        {errors?.zipCode?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.zipCode?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -160,7 +160,7 @@ export const Form = () => {
           placeholder="Seu endereço aqui"
           id={'endereco'}/>}
           
-        {errors?.street?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.street?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -173,7 +173,7 @@ export const Form = () => {
           placeholder="Sua cidade aqui"
           id={'cidade'}/>}
           
-        {errors?.city?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.city?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -186,7 +186,7 @@ export const Form = () => {
           placeholder="Seu estado aqui"
           id={'state'}/>}
           
-        {errors?.state?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.state?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -207,7 +207,7 @@ export const Form = () => {
           placeholder="Seu numero aqui"
           id={'number'}/>}
           
-        {errors?.number?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.number?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -220,17 +220,19 @@ export const Form = () => {
           placeholder="Seu bairro aqui"
           id={'neighborhood'}/>}
           
-        {errors?.neighborhood?.type && <SpanError>Campo obrigatório!</SpanError>}
+        <SpanError>{errors?.neighborhood?.message}</SpanError>
         </ConteinerInput>
 
 
       </FormStyle> 
 
-      <Botao type="submit" handleClick={handleSubmit(handleConfirmarForm, onError)}>
-        Cadastrar
-      </Botao>
+      <DivBotoes>
+        <Botao type="submit" handleClick={handleSubmit(handleConfirmarForm, onError)}>
+          Cadastrar
+        </Botao>
 
-      <BotaoLinkPaper href="/">Login</BotaoLinkPaper>
+        <BotaoLinkPaper href="/">Login</BotaoLinkPaper>
+      </DivBotoes>
     </div>
   );
 };

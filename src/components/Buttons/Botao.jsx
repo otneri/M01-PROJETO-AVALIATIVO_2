@@ -24,7 +24,7 @@ export const BotaoOnOff = ({ children, handleClick }) => {
 };
 
 export const BotaoLinkPaper = ({ children, handleClick }, funcao) => {
-  return <BotaoLinkStiled onClick={handleClick}>{children}</BotaoLinkStiled>;
+  return <BotaoLinkStiled  href={handleClick}>{children}</BotaoLinkStiled>;
 };
 
 export const BotaoFiltroDevice = ({ children, handleClick }) => {

@@ -9,9 +9,7 @@ export const Cadastro = () => {
             
             <Paper>
                 <Title>Cadastrar</Title>
-                <Form>
-                
-                </Form>
+                <Form/>
                 
             </Paper>
         </CadastroStyle>

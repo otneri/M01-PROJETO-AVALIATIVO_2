@@ -7,27 +7,24 @@ import { useState } from 'react'
 import { useAuth } from '../../contexts/Autenticação/index'
 
 export const LoginPage = () => {
-    const [input, setInput] = useState({
-        nome:''
-    });
+    // const [input, setInput] = useState({
+    //     nome:''
+    // });
 
-    const { setUsuario } = useAuth();
+    // const { setUsuario } = useAuth();
     
 
-    const handleLogin = () => {
-        localStorage.setItem("fullName", JSON.stringify(input));
-        setUsuario(input)
-    }
+    // const handleLogin = () => {
+    //     localStorage.setItem("fullName", JSON.stringify(input));
+    //     setUsuario(input)
+    // }
 
 
     return (
         <LoginPageStyle>
-
             <Paper>
                 <Title>Acessar</Title>
-                <FormLogin onChange={(e) => setInput({nome: e.target.value})}/>
-                <Botao handleClick={handleLogin}>Acessar</Botao>
-                <LoginStyle href='/'>Cadastrar</LoginStyle>
+                <FormLogin />
             </Paper>
         </LoginPageStyle>
     )
