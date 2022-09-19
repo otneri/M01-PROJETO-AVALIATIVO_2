@@ -1,0 +1,1 @@
+export {buscaCep} from './buscaCep'

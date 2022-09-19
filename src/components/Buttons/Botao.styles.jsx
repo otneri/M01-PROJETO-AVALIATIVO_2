@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { temaPrincipal } from "../../themes/TemaPrincipal";
+import {Link} from 'react-router-dom'
 
 export const BotaoStyled = styled.button`
 

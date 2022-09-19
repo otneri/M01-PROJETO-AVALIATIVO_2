@@ -1,12 +1,14 @@
 import { Input } from "../Inputs/Input";
 import { FormStyle, SpanError, DivBotoes } from "./Form.styled";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { Botao, BotaoLinkPaper } from "../Buttons/Botao";
 import { ConteinerInput, InputErrorStyled } from "../../components/Inputs/Input.styled";
 import { SubTitle } from "../../components/SubTitle/SubTitle";
-import {PhoneNumber, FullName} from '../../utils/validations'
+import {PhoneNumber, FullName, CepDigitos} from '../../utils/validations';
+import {useState} from 'react'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
+import { buscaCep } from "../../services/buscaCep";
 
   const validationSchema = yup.object({
     fullName: yup.string().min(2, 'Mínimo 2 catactéres').matches(FullName, 'Apenas letras').required('Campo obrigatório'),
@@ -15,7 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
     phone: yup.string().required('Campo obrigatório').matches(PhoneNumber),
     password: yup.string().required('Campo obrigatório'),
     passwordConfirm: yup.string().required('Campo obrigatório').oneOf([yup.ref('password'), null],'Senha incompatível'),
-    zipCode: yup.string().required('Campo obrigatório'),
+    zipCode: yup.string('Apenas números!').required('Campo obrigatório').matches(CepDigitos,  'Apenas números.'),
     street: yup.string().required('Campo obrigatório'),
     city: yup.string().required('Campo obrigatório'),
     state: yup.string().required('Campo obrigatório'),
@@ -26,16 +28,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 
 export const Form = () => {
-  const {  handleSubmit, register, formState : {errors} } = useForm({resolver: yupResolver(validationSchema)});
-  
-  
+  const {  handleSubmit, register, formState : {errors}, setValue, setFocus } = useForm({resolver: yupResolver(validationSchema)});
   
   const handleConfirmarForm = (valores) => {
     console.log(valores);
   }
-
-
-  
   
   function onError  (erro) {
     console.log('erro: ' , erro);
@@ -43,7 +40,23 @@ export const Form = () => {
   }
   
 
-  
+  const  [input , setInput] = useState ('');
+  const [cep , setCep] = useState ([])
+
+  const preencheCep= (ev) => {
+
+    const newCep = (ev.target.value.replace(/\D/g,''));
+    console.log(newCep);
+    fetch(`https://viacep.com.br/ws/${newCep}/json/`).then(res => res.json()).then(data =>{
+    console.log(data);
+    setValue('street', data.logradouro);
+    setValue('city', data.localidade);
+    setValue('state', data.uf);
+    setValue('complement', data.complemento);
+    setValue('neighborhood', data.bairro);
+    });
+  }
+ 
   
   return (
     <div>
@@ -75,7 +88,7 @@ export const Form = () => {
           />}
 
           
-        <SpanError>{errors?.fullName?.message}</SpanError>
+        <SpanError>{errors?.email?.message}</SpanError>
         </ConteinerInput>
 
         <ConteinerInput>
@@ -139,14 +152,17 @@ export const Form = () => {
         <SubTitle>CEP:</SubTitle>
         {errors?.zipCode?.type? <InputErrorStyled 
         {...register ('zipCode',{required:true})} 
-        placeholder="Digite o CEP aqui"
+        placeholder="Apenas números!"
         id={'CEP'}
+        onBlur={preencheCep}
+        
         />:
           <Input {...register ('zipCode',{required:true})} 
           placeholder="Digite o CEP aqui"
           id={'CEP'}
+          onBlur={preencheCep}
           />}
-          
+        
         <SpanError>{errors?.zipCode?.message}</SpanError>
         </ConteinerInput>
 
@@ -158,8 +174,10 @@ export const Form = () => {
         id={'endereco'}/>:
           <Input {...register ('street',{required:true})} 
           placeholder="Seu endereço aqui"
-          id={'endereco'}/>}
+          id={'endereco'}>
+            </Input>}
           
+        
         <SpanError>{errors?.street?.message}</SpanError>
         </ConteinerInput>
 

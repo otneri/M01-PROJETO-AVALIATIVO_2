@@ -23,8 +23,8 @@ export const BotaoOnOff = ({ children, handleClick }) => {
   return <BotaoOnOffStyled onClick={handleClick}>{children}</BotaoOnOffStyled>;
 };
 
-export const BotaoLinkPaper = ({ children, handleClick }, funcao) => {
-  return <BotaoLinkStiled  href={handleClick}>{children}</BotaoLinkStiled>;
+export const BotaoLinkPaper = () => {
+  return <BotaoLinkStiled> </BotaoLinkStiled>;
 };
 
 export const BotaoFiltroDevice = ({ children, handleClick }) => {
@@ -48,8 +48,7 @@ BotaoLogin.propTypes = {
 };
 
 BotaoLinkPaper.propTypes = {
-  children: Proptypes.node.isRequired,
-  handleClick: Proptypes.func,
+  children: Proptypes.node.isRequired
 };
 
 BotaoOnOff.propTypes = {
