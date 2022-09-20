@@ -1,5 +1,7 @@
 import axios from "axios";
 
-const serverConnectLab = axios.create({
-  baseURL: `https://connectlab.onrender.com/`,
+export const serverConnectLabDevices = axios.create({
+  baseURL: `https://connectlab.onrender.com/devices`,
 });
+
+

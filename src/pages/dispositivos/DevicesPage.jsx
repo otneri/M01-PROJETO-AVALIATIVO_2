@@ -16,20 +16,29 @@ import { Input } from "../../components/Inputs/Input";
 import { Select } from "../../components/SelectInput/Select";
 import { ModalDevice } from "../../components/Modal/ModalDevice";
 import { ConteinerInput } from "../../components/Inputs/Input.styled";
+import {serverConnectLabDevices} from '../../services/apis'
 
 export const DevicesPage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  
   const handleOpenModal = () => {
     setIsOpen(true);
   };
-
+  
   const handleCloseModal = () => {
     setIsOpen(false);
   };
+  
+  // const [dispositivos, setDispositivos] = useState([]);
+  
+  // async function componenteDevices ()  {
+  //   const response = await serverConnectLabDevices.get('');
+  //   return console.log(response.data);
+     
+  // };
 
   return (
-    <ConteinerStld>
+    <ConteinerStld onLoad={()=>{}}>
       <ModalDevice isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
         <Title>Lâmpada Inteligente</Title>
         <ConteinerInput>

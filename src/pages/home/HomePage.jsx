@@ -46,9 +46,28 @@ export const HomePage = () => {
       gap: "1em",
     },
   };
+  
+
+  
+  const city = 'Curitiba';
+
+  const [wether, setWether]=useState({})
+  
+  const getWetherData = () => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`)
+    .then ((res)=> res.json())
+    .then((data) =>  {
+      console.log(data)
+      setWether(data.main.temp)
+
+    }
+    );
+    
+  };
+
 
   return (
-    <HomeStyled>
+    <HomeStyled onLoad={getWetherData(city)} >
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -73,10 +92,10 @@ export const HomePage = () => {
       </Modal>
 
       <Paper>
-        <Title>16° C</Title>
-        <Paragraph>Pato Branco, PR</Paragraph>
+        <Title>&deg; C</Title>
+        <Paragraph>, PR</Paragraph>
         <SubParagraph>
-          <Pparagraph>Sensação térmica: 15ºC</Pparagraph>
+          <Pparagraph>Sensação térmica: <span>15</span>&deg;C</Pparagraph>
           <Pparagraph>Precipitação: 0mm</Pparagraph>
           <Pparagraph>Chance de chuva: 0%</Pparagraph>
         </SubParagraph>
@@ -99,3 +118,5 @@ export const HomePage = () => {
     </HomeStyled>
   );
 };
+
+//  ba605efc18f1572f61892fe426f18a1a

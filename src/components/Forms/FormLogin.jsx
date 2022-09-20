@@ -24,9 +24,25 @@ export const FormLogin = () => {
     console.log(valores);
   };
 
+  const buscarPerfil = (token, usuario, set) => {
+    fetch(`https://connectlab.onrender.com/users/${usuario}`, {
+      method: 'get',
+      headers: new Headers ({
+        Authorization: `Bearer ${token}`,
+      })
+    })
+    .then((response) => response.json())
+    .then((data) => {set(data)
+      return(data)}
+    )  
+
+
+  }
+
+
   return (
     <>
-      <FormStyle onSubmit={handleSubmit(handleConfirmarForm)}>
+      <FormStyle onSubmit={handleSubmit(handleConfirmarForm, buscarPerfil)}>
         <ConteinerInput>
           <SubTitle>E-mail: </SubTitle>
           <Input {...register("email")} />
@@ -41,7 +57,7 @@ export const FormLogin = () => {
       </FormStyle>
 
       <DivBotoes>
-        <Botao handleClick={handleSubmit(handleConfirmarForm)}>Login</Botao>
+        <Botao handleClick={handleSubmit(handleConfirmarForm, buscarPerfil)}>Login</Botao>
 
         <Link to="/cadastro">Cadastre-se</Link>
       </DivBotoes>
