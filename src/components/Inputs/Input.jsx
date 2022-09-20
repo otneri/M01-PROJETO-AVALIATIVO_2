@@ -1,20 +1,14 @@
-import {InputErrorStyled, InputStyled} from './Input.styled'
-import { forwardRef} from 'react'
+import { InputErrorStyled, InputStyled } from "./Input.styled";
+import { forwardRef } from "react";
 
-export const Input = forwardRef((props, ref)  => 
-   
-    <InputStyled {...props} ref={ref}></InputStyled>
-);
+export const Input = forwardRef((props, ref) => (
+  <InputStyled {...props} ref={ref}></InputStyled>
+));
 
+Input.displayName = "Input";
 
-Input.displayName = 'Input';
+export const InputError = forwardRef((props, ref) => (
+  <InputErrorStyled {...props} ref={ref} />
+));
 
-export const InputError = forwardRef( (props, ref) => 
-   
-    <InputErrorStyled  {...props} ref={ref}/>
-);
-
-
-InputError.displayName = 'Input';
-
-
+InputError.displayName = "Input";

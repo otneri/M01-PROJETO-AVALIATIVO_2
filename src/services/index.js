@@ -1,1 +1,1 @@
-export {buscaCep} from './buscaCep'
+export {buscaCep} from './apis'

@@ -27,8 +27,8 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = () => {
     localStorage.removeItem("fullName");
     setUsuario({
-      nome:''
-    })
+      nome: "",
+    });
   };
 
   return (

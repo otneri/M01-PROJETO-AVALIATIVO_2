@@ -17,7 +17,7 @@ export const Rotas = () => {
         path="/Home"
         element={
           // <RotaPrivada>
-            <HomePage />
+          <HomePage />
           // </RotaPrivada>
         }
       />
@@ -44,7 +44,7 @@ export const Rotas = () => {
         path="/devices"
         element={
           // <RotaPrivada>
-            <DevicesPage />
+          <DevicesPage />
           // </RotaPrivada>
         }
       />

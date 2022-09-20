@@ -4,15 +4,15 @@ import Proptypes from "prop-types";
 import { Logo } from "../../assets/img";
 import { Paragraph } from "../../pages/home/HomePage.styled";
 
-export const Paper = ({ children, handleclick}) => {
-  return <PaperStyled onClick={handleclick} >{children}</PaperStyled>;
+export const Paper = ({ children, handleclick }) => {
+  return <PaperStyled onClick={handleclick}>{children}</PaperStyled>;
 };
 
 export const PaperListDevices = ({ children }) => {
   return <>{children}</>;
 };
 
-export const PaperDevice = ( {handleclick} ) => {
+export const PaperDevice = ({ handleclick }) => {
   return (
     <PaperStyled onClick={handleclick}>
       <DivPaperDeviceStyled>
@@ -33,7 +33,7 @@ export const PaperDevice = ( {handleclick} ) => {
 
 Paper.propTypes = {
   children: Proptypes.node.isRequired,
-  handleclick: Proptypes.func
+  handleclick: Proptypes.func,
 };
 
 PaperListDevices.propTypes = {
@@ -41,5 +41,5 @@ PaperListDevices.propTypes = {
 };
 
 PaperDevice.propTypes = {
-    handleclick: Proptypes.func
-}
+  handleclick: Proptypes.func,
+};

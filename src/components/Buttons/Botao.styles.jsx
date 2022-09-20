@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { temaPrincipal } from "../../themes/TemaPrincipal";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export const BotaoStyled = styled.button`
-
-/* como add condicional */
+  /* como add condicional */
   /* background-color: ${(props) =>
     props.bg === "primario" ? temaPrincipal.colors.backgroundHeader : "red"}; */
-
 
   background-color: ${temaPrincipal.colors.backgroundHeader};
   color: ${temaPrincipal.text.white};

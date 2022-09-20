@@ -17,11 +17,11 @@ function App() {
         <AuthProvider>
           <Header />
           <Global />
-            <BodyStyled>
-              <main>
-                <Rotas/>
-              </main>
-            </BodyStyled>
+          <BodyStyled>
+            <main>
+              <Rotas />
+            </main>
+          </BodyStyled>
           <Global />
         </AuthProvider>
       </ThemeProvider>
