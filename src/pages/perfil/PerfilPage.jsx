@@ -1,6 +1,6 @@
 import { Paper } from "../../components/Paper/Paper";
-import { Title } from "../../components/Title/Title";
-import { Botao, BotaoLinkPaper } from "../../components/Buttons/Botao";
+import { Title } from "../../components/Titulo/Titulo";
+import { Botao, BotaoLinkPaper } from "../../components/Botoes/Botao";
 import {
   ConteinerProfileStyled,
   DivPerfil,

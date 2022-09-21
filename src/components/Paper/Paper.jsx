@@ -1,8 +1,8 @@
 import { PaperStyled, Comodos, DivPaperDeviceStyled } from "./Paper.styled";
-import { BotaoOnOff } from "../Buttons/Botao";
+import { BotaoOnOff } from "../Botoes/Botao";
 import Proptypes from "prop-types";
 import { Logo } from "../../assets/img";
-import { Paragraph } from "../../pages/home/HomePage.styled";
+import { Paragraph } from "../../pages/homepage/HomePage.styled";
 
 export const Paper = ({ children, handleclick }) => {
   return <PaperStyled onClick={handleclick}>{children}</PaperStyled>;

@@ -1,8 +1,8 @@
-import { SubTitle } from "../SubTitle/SubTitle";
-import { ConteinerInput } from "../../components/Inputs/Input.styled";
-import { Input } from "../Inputs/Input";
+import { SubTitle } from "../SubTitle/SubTitulo";
+import { ConteinerInput } from "../Inputs/InputComp.styled";
+import { Input } from "../Inputs/InputComp";
 import { DivBotoes, FormStyle, SpanError } from "./Form.styled";
-import { Botao, BotaoLinkPaper } from "../Buttons/Botao";
+import { Botao, BotaoLinkPaper } from "../Botoes/Botao";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";

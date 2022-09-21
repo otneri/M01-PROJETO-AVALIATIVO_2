@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Logo } from "../../assets/img";
-import { Botao, BotaoLogin } from "../../components/Buttons/Botao";
+import { Botao, BotaoLogin } from "../../components/Botoes/Botao";
 import { Paper } from "../../components/Paper/Paper";
-import { SubTitle } from "../../components/SubTitle/SubTitle";
-import { Title } from "../../components/Title/Title";
-import { GridListDevices, Paragraph } from "../home/HomePage.styled";
+import { SubTitle } from "../../components/SubTitle/SubTitulo";
+import { Title } from "../../components/Titulo/Titulo";
+import { GridListDevices, Paragraph } from "../homepage/HomePage.styled";
 import {
   ConteinerStld,
   DivButtonsModalStld,
@@ -12,10 +12,10 @@ import {
   DivSearchBarStld,
   SearchBar,
 } from "./DevicesPage.styld";
-import { Input } from "../../components/Inputs/Input";
-import { Select } from "../../components/SelectInput/Select";
-import { ModalDevice } from "../../components/Modal/ModalDevice";
-import { ConteinerInput } from "../../components/Inputs/Input.styled";
+import { Input } from "../../components/Inputs/InputComp";
+import { Select } from "../../components/SelectInput/SelectInput";
+import { ModalDevice } from "../../components/Modais/ModalDevice";
+import { ConteinerInput } from "../../components/Inputs/InputComp.styled";
 import {serverConnectLabDevices} from '../../services/apis'
 
 export const DevicesPage = () => {

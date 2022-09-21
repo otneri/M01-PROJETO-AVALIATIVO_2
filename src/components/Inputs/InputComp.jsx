@@ -1,4 +1,4 @@
-import { InputErrorStyled, InputStyled } from "./Input.styled";
+import { InputErrorStyled, InputStyled } from "./InputComp.styled";
 import { forwardRef } from "react";
 
 export const Input = forwardRef((props, ref) => (

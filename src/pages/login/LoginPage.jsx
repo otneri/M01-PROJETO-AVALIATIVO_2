@@ -1,6 +1,6 @@
 import { Paper } from "../../components/Paper/Paper";
-import { Title } from "../../components/Title/Title";
-import { Botao } from "../../components/Buttons/Botao";
+import { Title } from "../../components/Titulo/Titulo";
+import { Botao } from "../../components/Botoes/Botao";
 import { LoginPageStyle, LoginStyle } from "./LoginPage.styled";
 import { FormLogin } from "../../components/Forms/FormLogin";
 import { useState } from "react";
@@ -20,6 +20,7 @@ export const LoginPage = () => {
 
   return (
     <LoginPageStyle>
+      <h1>TESTasna</h1>
       <Paper>
         <Title>Acessar</Title>
         <FormLogin />

@@ -1,7 +1,7 @@
 import Proptypes from "prop-types";
-import { ConteinerInput } from "../Inputs/Input.styled";
-import { SubTitle } from "../SubTitle/SubTitle";
-import { OptionStld, SelectStld } from "./Select.stld";
+import { ConteinerInput } from "../Inputs/InputComp.styled";
+import { SubTitle } from "../SubTitle/SubTitulo";
+import { OptionStld, SelectStld } from "./SelectInput.stld";
 
 export const Select = ({ children, placeholder }) => {
   return (

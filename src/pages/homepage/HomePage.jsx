@@ -3,9 +3,9 @@ import {
   Botao,
   BotaoFiltroDevice,
   BotaoOnOff,
-} from "../../components/Buttons/Botao";
+} from "../../components/Botoes/Botao";
 import { Paper, PaperDevice } from "../../components/Paper/Paper";
-import { Title } from "../../components/Title/Title";
+import { Title } from "../../components/Titulo/Titulo";
 import Modal from "react-modal";
 import {
   HomeStyled,
@@ -16,7 +16,7 @@ import {
   DivBotaoPowerstld,
 } from "./HomePage.styled";
 import { Logo } from "../../assets/img";
-import { SubParagraph } from "../../components/SubTitle/SubTitle";
+import { SubParagraph } from "../../components/SubTitle/SubTitulo";
 
 export const HomePage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -46,28 +46,24 @@ export const HomePage = () => {
       gap: "1em",
     },
   };
-  
 
-  
-  const city = 'Curitiba';
+  const city = "Curitiba";
 
-  const [wether, setWether]=useState({})
-  
+  const [wether, setWether] = useState({});
+
   const getWetherData = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`)
-    .then ((res)=> res.json())
-    .then((data) =>  {
-      console.log(data)
-      setWether(data.main.temp)
-
-    }
-    );
-    
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setWether(data.main.temp);
+      });
   };
 
-
   return (
-    <HomeStyled onLoad={getWetherData(city)} >
+    <HomeStyled onLoad={getWetherData(city)}>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -95,7 +91,9 @@ export const HomePage = () => {
         <Title>&deg; C</Title>
         <Paragraph>, PR</Paragraph>
         <SubParagraph>
-          <Pparagraph>Sensação térmica: <span>15</span>&deg;C</Pparagraph>
+          <Pparagraph>
+            Sensação térmica: <span>15</span>&deg;C
+          </Pparagraph>
           <Pparagraph>Precipitação: 0mm</Pparagraph>
           <Pparagraph>Chance de chuva: 0%</Pparagraph>
         </SubParagraph>

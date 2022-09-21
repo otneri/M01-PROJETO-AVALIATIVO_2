@@ -1,7 +1,7 @@
-import {Form} from '../../components/Forms/Form'
+import {Form} from '../../components/Forms/Formulario'
 import {Paper} from '../../components/Paper/Paper'
-import {Title} from '../../components/Title/Title'
-import {Botao, BotaoLinkPaper} from '../../components/Buttons/Botao'
+import {Title} from '../../components/Titulo/Titulo'
+import {Botao, BotaoLinkPaper} from '../../components/Botoes/Botao'
 import { PerfilEditarStyled } from './PerfilEditar.styled'
 
 export const EditarPerfilPage = () => {

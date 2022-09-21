@@ -1,12 +1,12 @@
-import { Input } from "../Inputs/Input";
+import { Input } from "../Inputs/InputComp";
 import { FormStyle, SpanError, DivBotoes } from "./Form.styled";
 import { useForm, useFormState } from "react-hook-form";
-import { Botao, BotaoLinkPaper } from "../Buttons/Botao";
+import { Botao, BotaoLinkPaper } from "../Botoes/Botao";
 import {
   ConteinerInput,
   InputErrorStyled,
-} from "../../components/Inputs/Input.styled";
-import { SubTitle } from "../../components/SubTitle/SubTitle";
+} from "../Inputs/InputComp.styled";
+import { SubTitle } from "../SubTitle/SubTitulo";
 import { PhoneNumber, FullName, CepDigitos } from "../../utils/validations";
 import { useState } from "react";
 import * as yup from "yup";
