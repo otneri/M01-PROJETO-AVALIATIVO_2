@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Botao,
   BotaoFiltroDevice,
@@ -50,10 +50,14 @@ export const HomePage = () => {
   };
   
 
-  const city = 'Ribeirao Pires';
+  const city = 'Macapá';
 
   const [wether, setWether] = useState([]);
   
+  useEffect(() => {
+    getWetherData()
+
+  }, [])
   
 
   const getWetherData = async() => {
@@ -102,6 +106,7 @@ export const HomePage = () => {
         <Title>{wether.temperatura}&deg; C</Title>
         <Paragraph>{wether.nome}, {wether.pais} </Paragraph>
         <SubParagraph>
+          
           <Pparagraph>Sensação térmica: {wether.sensacao}&deg;C</Pparagraph>
           <Pparagraph>Velocidade do vento: {wether.velocidade}</Pparagraph>
           <Pparagraph>Umidade: {wether.umidade} </Pparagraph>

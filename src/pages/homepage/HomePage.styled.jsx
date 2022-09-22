@@ -35,4 +35,7 @@ export const DivBotaoPowerstld = styled.div`
 
 export const IconeEstilizado = styled.img `
   width: 4em;
+  background-color: ${temaPrincipal.colors.softColor};
+  margin-top: 1em;
+  border-radius: 4em;
 `;

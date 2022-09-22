@@ -5,6 +5,7 @@ export const temaPrincipal = {
     cardBackground: "#ffffff",
     successBackground: "#66BB6A",
     error: "#ff0000",
+    softColor: '#F0B27A'
   },
 
   text: {
