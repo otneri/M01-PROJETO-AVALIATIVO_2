@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Modal from "react-modal";
 import { temaPrincipal } from "../../themes";
 
 export const SelectStld = styled.select`

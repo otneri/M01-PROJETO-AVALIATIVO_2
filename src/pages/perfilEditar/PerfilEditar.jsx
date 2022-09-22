@@ -4,10 +4,14 @@ import {Title} from '../../components/Titulo/Titulo'
 import {Botao, BotaoLinkPaper} from '../../components/Botoes/Botao'
 import { PerfilEditarStyled } from './PerfilEditar.styled'
 
+
+
+
 export const EditarPerfilPage = () => {
     return (
         <PerfilEditarStyled>
             <Paper>
+                <h1>jutsu</h1>
                 <Title>Meu perfil</Title>
                 <Form/>
                 <Botao>Salvar</Botao>

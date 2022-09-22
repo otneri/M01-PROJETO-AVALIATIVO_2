@@ -1,26 +1,25 @@
 import { Paper } from "../../components/Paper/Paper";
 import { Title } from "../../components/Titulo/Titulo";
-import { Botao } from "../../components/Botoes/Botao";
-import { LoginPageStyle, LoginStyle } from "./LoginPage.styled";
+import { LoginPageStyle } from "./LoginPage.styled";
 import { FormLogin } from "../../components/Forms/FormLogin";
-import { useState } from "react";
-import { useAuth } from "../../contexts/Autenticação/index";
+// import { useState } from "react";
+// import { useAuth } from "../../contexts/Autenticação/index";
 
 export const LoginPage = () => {
-  const [input, setInput] = useState({
-    nome: "",
-  });
+  // const [input, setInput] = useState({
+  //   nome: "",
+  // });
 
-  const { setUsuario } = useAuth();
+  // const { setUsuario } = useAuth();
 
-  const handleLogin = () => {
-    localStorage.setItem("fullName", JSON.stringify(input));
-    setUsuario(input);
-  };
+  // const handleLogin = () => {
+  //   localStorage.setItem("fullName", JSON.stringify(input));
+  //   setUsuario(input);
+  // };
 
   return (
     <LoginPageStyle>
-      <h1>TESTasna</h1>
+      
       <Paper>
         <Title>Acessar</Title>
         <FormLogin />

@@ -12,9 +12,12 @@ import {
 } from "./PerfilPage.styled";
 import { Logo } from "../../assets/img";
 
+console.log('Peido');
+
 export const PerfilPage = () => {
   return (
     <PerfilPageStyle>
+      
       <Paper>
         <Title>Meu Perfil</Title>
         <ConteinerProfileStyled>

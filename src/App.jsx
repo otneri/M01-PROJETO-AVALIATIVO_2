@@ -1,7 +1,7 @@
 import { Global } from "./themes/TemaGlobal";
 import { BrowserRouter } from "react-router-dom";
 import { Rotas } from "./routes";
-import { Header } from "./components/HeaderBar/HeaderBar";
+import { HeaderBar } from "./components/HeaderBar/HeaderBar";
 import { BodyStyled } from "./themes/ConfiguracaoGeral.styles";
 import Modal from "react-modal";
 import { AuthProvider } from "./contexts/index";
@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={temaPrincipal}>
         <AuthProvider>
-          <Header />
+          <HeaderBar />
           <Global />
           <BodyStyled>
             <main>

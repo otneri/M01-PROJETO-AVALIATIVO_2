@@ -14,9 +14,11 @@ import {
   BotoesFiltroDevices,
   GridListDevices,
   DivBotaoPowerstld,
+  IconeEstilizado,
 } from "./HomePage.styled";
 import { Logo } from "../../assets/img";
 import { SubParagraph } from "../../components/SubTitle/SubTitulo";
+import { IconWeatherStld } from "../../components/Imagem/Imagem";
 
 export const HomePage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -46,24 +48,33 @@ export const HomePage = () => {
       gap: "1em",
     },
   };
+  
 
-  const city = "Curitiba";
+  const city = 'Ribeirao Pires';
 
-  const [wether, setWether] = useState({});
+  const [wether, setWether] = useState([]);
+  
+  
 
-  const getWetherData = () => {
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setWether(data.main.temp);
-      });
-  };
+  const getWetherData = async() => {
+    const dados = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`)
+    const converter= await dados.json();
+    console.log(converter);
+    setWether ({
+      nome: converter.name,
+      temperatura: `${parseInt(converter.main.temp) }`,
+      umidade: `${converter.main.humidity}%`,
+      velocidade: `${converter.wind.speed} Km/h`, 
+      sensacao: `${parseInt(converter.main.feels_like) }`,
+      pais: `${converter.sys.country}`,
+      condicao: converter.weather[0].description,
+      icone: `http://openweathermap.org/img/wn/${converter.weather[0].icon}.png`
+    })}
+    console.log(wether);
 
   return (
-    <HomeStyled onLoad={getWetherData(city)}>
+    <HomeStyled onLoad={getWetherData} >
+      
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -88,15 +99,14 @@ export const HomePage = () => {
       </Modal>
 
       <Paper>
-        <Title>&deg; C</Title>
-        <Paragraph>, PR</Paragraph>
+        <Title>{wether.temperatura}&deg; C</Title>
+        <Paragraph>{wether.nome}, {wether.pais} </Paragraph>
         <SubParagraph>
-          <Pparagraph>
-            Sensação térmica: <span>15</span>&deg;C
-          </Pparagraph>
-          <Pparagraph>Precipitação: 0mm</Pparagraph>
-          <Pparagraph>Chance de chuva: 0%</Pparagraph>
+          <Pparagraph>Sensação térmica: {wether.sensacao}&deg;C</Pparagraph>
+          <Pparagraph>Velocidade do vento: {wether.velocidade}</Pparagraph>
+          <Pparagraph>Umidade: {wether.umidade} </Pparagraph>
         </SubParagraph>
+          <IconeEstilizado src={wether.icone} alt='icone'/>
       </Paper>
 
       <BotoesFiltroDevices>
@@ -116,5 +126,3 @@ export const HomePage = () => {
     </HomeStyled>
   );
 };
-
-//  ba605efc18f1572f61892fe426f18a1a

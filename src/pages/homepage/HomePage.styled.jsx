@@ -32,3 +32,7 @@ export const DivBotaoPowerstld = styled.div`
   align-items: center;
   gap: 2em;
 `;
+
+export const IconeEstilizado = styled.img `
+  width: 4em;
+`;

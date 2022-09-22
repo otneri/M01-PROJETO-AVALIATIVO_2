@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Logo } from "../../assets/img";
 import { Botao, BotaoLogin } from "../../components/Botoes/Botao";
 import { Paper } from "../../components/Paper/Paper";
@@ -16,7 +16,7 @@ import { Input } from "../../components/Inputs/InputComp";
 import { Select } from "../../components/SelectInput/SelectInput";
 import { ModalDevice } from "../../components/Modais/ModalDevice";
 import { ConteinerInput } from "../../components/Inputs/InputComp.styled";
-import {serverConnectLabDevices} from '../../services/apis'
+
 
 export const DevicesPage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -37,8 +37,20 @@ export const DevicesPage = () => {
      
   // };
 
+  
+    
+  // const getDataWether = () => {
+    
+  // }
+
+
+            // 
+            // 
+            // 
+            // 
   return (
-    <ConteinerStld onLoad={()=>{}}>
+    <ConteinerStld >
+      
       <ModalDevice isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
         <Title>Lâmpada Inteligente</Title>
         <ConteinerInput>
@@ -46,6 +58,7 @@ export const DevicesPage = () => {
           <Select placeholder="Digite o local" />
         </ConteinerInput>
 
+        
         <ConteinerInput>
           <SubTitle>Cômodo*</SubTitle>
           <Input placeholder="Digite o cômodo"></Input>
@@ -57,7 +70,13 @@ export const DevicesPage = () => {
         </DivButtonsModalStld>
       </ModalDevice>
       <DivDevicespgStld>
-        <Title>Dispositivos</Title>
+        <Title>
+          
+
+          {/* {Object.values(wether).map((item, key) =>
+            item )} */}
+
+        </Title>
 
         <SubTitle>Nome do dispositivo</SubTitle>
 
