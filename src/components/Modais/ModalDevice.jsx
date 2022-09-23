@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-import { temaPrincipal } from "../../themes/TemaPrincipal";
 import PropTypes from "prop-types";
 
 export const ModalDevice = ({ isOpen, onRequestClose, style, children }) => {
@@ -12,7 +11,7 @@ export const ModalDevice = ({ isOpen, onRequestClose, style, children }) => {
       width: "max-content",
       marginRight: "-50%",
       transform: "translate(-40%, -10%)",
-      background: `${temaPrincipal.colors.backgroundPrincipal}`,
+      background: `${(theme)=> theme.color.backgroundPrincipal}`,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

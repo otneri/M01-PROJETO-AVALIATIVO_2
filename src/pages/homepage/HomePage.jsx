@@ -18,7 +18,7 @@ import {
 } from "./HomePage.styled";
 import { Logo } from "../../assets/img";
 import { SubParagraph } from "../../components/SubTitle/SubTitulo";
-import { IconWeatherStld } from "../../components/Imagem/Imagem";
+import { IconWeatherStld } from "../../components/Image/Imagem";
 
 export const HomePage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -50,8 +50,7 @@ export const HomePage = () => {
   };
   
 
-  const city = 'Macapá';
-
+  const city = 'Ribeirão Pires';
   const [wether, setWether] = useState([]);
   
   useEffect(() => {

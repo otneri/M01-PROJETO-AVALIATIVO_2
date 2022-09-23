@@ -6,24 +6,33 @@ import { BodyStyled } from "./themes/ConfiguracaoGeral.styles";
 import Modal from "react-modal";
 import { AuthProvider } from "./contexts/index";
 import { ThemeProvider } from "styled-components";
-import { temaPrincipal } from "./themes";
+import { temaDark, temaPrincipal } from "./themes";
+import { useState } from "react";
+import { BotaoFiltroDevice } from "./components/Botoes/Botao";
+import { TrocaTemas } from "./contexts/Temas/Temas";
+import { useTema } from "./contexts/Temas/useTema";
 
 Modal.setAppElement("#root");
 
 function App() {
+  const {theme} = useTema()
+  
+
   return (
     <BrowserRouter>
-      <ThemeProvider theme={temaPrincipal}>
-        <AuthProvider>
+      <ThemeProvider theme={theme}>
           <HeaderBar />
           <Global />
           <BodyStyled>
             <main>
-              <Rotas />
+              <TrocaTemas>
+              <AuthProvider>
+                <Rotas />
+              </AuthProvider>
+              </TrocaTemas>
             </main>
           </BodyStyled>
           <Global />
-        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

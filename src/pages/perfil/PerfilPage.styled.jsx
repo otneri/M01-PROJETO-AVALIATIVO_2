@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { temaPrincipal } from "../../themes/TemaPrincipal";
 
 export const PerfilPageStyle = styled.section`
-  color: ${temaPrincipal.text.orangedark};
+  color: ${(theme)=>theme.text.orangedark};
   font-weight: bold;
   font-size: medium;
 `;
@@ -35,7 +34,7 @@ export const SubDivPerfil = styled.div`
 `;
 
 export const Line = styled.hr`
-  color: black;
+  color: ${({theme})=>theme.text.black};
   size: 1em;
   border: 1em;
 `;

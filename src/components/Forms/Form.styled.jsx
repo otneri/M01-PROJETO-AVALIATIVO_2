@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { temaPrincipal } from "../../themes/TemaPrincipal";
 
 export const FormStyle = styled.form`
   display: grid;
@@ -9,7 +8,7 @@ export const FormStyle = styled.form`
 `;
 
 export const SpanError = styled.span`
-  color: ${temaPrincipal.colors.error};
+  color: ${({theme})=> theme.color.error};
 `;
 
 export const DivBotoes = styled.div`
@@ -22,7 +21,7 @@ export const InputLogin = styled.input`
   padding: 0.7em;
   width: 25em;
   &:hover {
-    border-color: ${temaPrincipal.colors.backgroundHeader};
+    border-color: ${({theme})=> theme.color.backgroundHeader};
   }
   border-style: solid;
 `;

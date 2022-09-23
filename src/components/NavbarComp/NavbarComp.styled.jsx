@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import {temaPrincipal} from '../../themes/TemaPrincipal'
 
 export const NavStyled = styled.nav`
   display: flex;
@@ -17,7 +16,7 @@ export const LiStyled = styled.li`
   list-style: none;
 `;
 export const AStyled = styled.a`
-  color: white;
+  color: ${({theme})=> theme.text.white};
   text-decoration: none;
 
   &:hover {

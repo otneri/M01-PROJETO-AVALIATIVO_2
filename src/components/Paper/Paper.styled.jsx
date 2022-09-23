@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { temaPrincipal } from "../../themes/TemaPrincipal";
 
 export const PaperStyled = styled.section`
-  background-color: ${temaPrincipal.colors.cardBackground};
-  color: ${temaPrincipal.text.orange};
+  background-color: ${({theme}) => theme.color.cardBackground};
+  color: ${({theme})=> theme.text.orange};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +14,7 @@ export const PaperStyled = styled.section`
 `;
 
 export const Comodos = styled.div`
-  color: ${temaPrincipal.text.grey};
+  color: ${({theme})=> theme.text.grey};
   display: flex;
   font-size: smaller;
   gap: 0.3em;

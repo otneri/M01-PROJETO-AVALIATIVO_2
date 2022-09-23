@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { temaPrincipal } from "../../themes";
+
 
 export const HomeStyled = styled.main``;
 
 export const Paragraph = styled.p`
-  color: ${temaPrincipal.text.grey};
+  color: ${({theme})=>theme.text.grey};
   font-weight: bold;
   font-size: larger;
   margin-bottom: 0.5em;
@@ -12,7 +12,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Pparagraph = styled.p`
-  color: ${temaPrincipal.text.grey};
+  color: ${({theme})=>theme.text.grey};
   display: flex;
 `;
 
@@ -35,7 +35,8 @@ export const DivBotaoPowerstld = styled.div`
 
 export const IconeEstilizado = styled.img `
   width: 4em;
-  background-color: ${temaPrincipal.colors.softColor};
+  background-color: ${({theme})=>theme.color.softColor};
   margin-top: 1em;
   border-radius: 4em;
+  border-style: solid;
 `;

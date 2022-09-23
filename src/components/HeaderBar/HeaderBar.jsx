@@ -11,7 +11,7 @@ export const HeaderBar = () => {
       <Div>
         <Logo />
         <TitleHeaderStyled>Connect Lab</TitleHeaderStyled>
-        <h1>Alguma coisa</h1>
+        
       </Div>
 
       <BotaoLogin>login</BotaoLogin>

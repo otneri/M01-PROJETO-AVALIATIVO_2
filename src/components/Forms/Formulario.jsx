@@ -20,7 +20,7 @@ const validationSchema = yup.object({
   emaill: yup.string().email("Campo obrigatório"),
   photoURL: yup.string(),
   phone: yup.string().required("Campo obrigatório").matches(PhoneNumber),
-  password: yup.string().required("Campo obrigatório"),
+  password: yup.string().required("Campo obrigatório").min(8, 'Mínimo 8 caracteres.'),
   passwordConfirm: yup
     .string()
     .required("Campo obrigatório")

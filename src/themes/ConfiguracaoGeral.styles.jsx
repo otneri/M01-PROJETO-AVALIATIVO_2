@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { temaPrincipal } from "./TemaPrincipal";
 
 export const BodyStyled = styled.div`
-  background-color: ${temaPrincipal.colors.backgroundPrincipal};
+  background-color: ${({theme}) =>theme.color.backgroundPrincipal};
   display: flex;
   flex-direction: column;
   justify-content: center;

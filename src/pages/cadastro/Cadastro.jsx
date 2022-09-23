@@ -11,7 +11,6 @@ export const Cadastro = () => {
     <CadastroStyle>
       
       <Paper>
-        <SubTitle>asdas</SubTitle>
         <Title>Cadastrar</Title>
         <Form />
       </Paper>

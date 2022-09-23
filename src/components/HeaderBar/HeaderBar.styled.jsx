@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { temaPrincipal } from "../../themes/TemaPrincipal";
 
 export const HeaderStyled = styled.header`
   padding: 1vh 4vh;
@@ -7,7 +6,7 @@ export const HeaderStyled = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: ${temaPrincipal.colors.backgroundHeader};
+  background-color: ${({theme})=> theme.color.backgroundHeader};
   gap: 5vh;
 `;
 

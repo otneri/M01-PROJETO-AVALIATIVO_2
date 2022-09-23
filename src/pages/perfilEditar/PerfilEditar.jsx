@@ -11,7 +11,6 @@ export const EditarPerfilPage = () => {
     return (
         <PerfilEditarStyled>
             <Paper>
-                <h1>jutsu</h1>
                 <Title>Meu perfil</Title>
                 <Form/>
                 <Botao>Salvar</Botao>

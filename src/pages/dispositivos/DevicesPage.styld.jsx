@@ -15,7 +15,8 @@ export const DivDevicespgStld = styled.div`
 export const SearchBar = styled.input`
   width: 90%;
   padding: 0em 1em;
-  border: none;
+  border: solid;
+  border-color: ${({theme})=>theme.color.border};
 `;
 export const DivSearchBarStld = styled.div`
   display: flex;
