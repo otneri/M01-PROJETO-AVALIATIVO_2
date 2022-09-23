@@ -4,6 +4,7 @@ export const SubTitleStyled = styled.h2`
   color: ${({theme})=> theme.text.orangedark};
   font-weight: bold;
   font-size: medium;
+  margin: .3em 0em;
 `;
 
 export const SubParagraphStld = styled.div`

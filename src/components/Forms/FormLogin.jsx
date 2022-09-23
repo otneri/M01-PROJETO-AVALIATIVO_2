@@ -34,10 +34,13 @@ export const FormLogin = () => {
     .then((response) => response.json())
     .then((data) => {set(data)
       return(data)}
-    )  
+    )}
 
-
-  }
+    const linkStyld ={
+      cursor: 'pointer',
+      textDecoration: 'underline',
+      color: '#CA6F1E'
+    }
 
 
   return (
@@ -59,7 +62,7 @@ export const FormLogin = () => {
       <DivBotoes>
         <Botao handleClick={handleSubmit(handleConfirmarForm, buscarPerfil)}>Login</Botao>
 
-        <Link to="/cadastro">Cadastre-se</Link>
+        <SubTitle >Não tem conta? <Link to="/cadastro" style={linkStyld}>Cadastre-se</Link></SubTitle>
       </DivBotoes>
     </>
   );
