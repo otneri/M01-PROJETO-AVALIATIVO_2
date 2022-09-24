@@ -24,22 +24,24 @@ export const FormLogin = () => {
 // FORMULARIO
 
 // CONFIRMAR USER
-
+  const efetuarLogin = `https://connectlab.onrender.com/auth/login`
   const headers = {
     "Content-Type": "application/json"
   }
   
 
+  const getPerfilValido = (body) => {
+    axios.post(efetuarLogin, body, headers)
+
+  }
+
   const handleConfirmarLogin= (valores) => {
     console.log(valores);
-    getPerfilValido(valores)
+    axios.post(efetuarLogin, valores, headers)
     .then((response) => {console.log(response)
     .catch((error) => console.log("Ops, algo deu errado: " + error))})};
 
-  const getPerfilValido = (body) => {
-    axios.post(handleConfirmarLogin, body, headers)
-
-  }
+  
 
 
 
