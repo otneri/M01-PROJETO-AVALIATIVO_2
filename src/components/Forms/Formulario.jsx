@@ -8,6 +8,7 @@ import { PhoneNumber, FullName, CepDigitos } from "../../utils/validations";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
 
 const validationSchema = yup.object({
@@ -80,22 +81,18 @@ export const Form = () => {
     "Content-Type": "application/json"
   }
 
-  const submitUser = (body) => {
-    axios
-      .post(cadastrarUser, body, headers)  
-  };
  
 
   const handleConfirmarForm = (valores) => {
-    console.log(valores);
-    submitUser(valores) 
+    console.log(valores, 'valores');
+    axios
+    .post(cadastrarUser, valores, headers) 
     .then((response) => {
-      console.log(response)})
-    .catch((error) =>  {console.log("Ops, algo deu errado: " + error)})
+      console.log(response, 'response')})
+    .catch((erro)=> alert( erro?.response?.data?.error))
     
   };
 
-  
 
 
   
@@ -106,7 +103,7 @@ export const Form = () => {
   return (
     <div>
       <FormStyle
-        onSubmit={handleSubmit(handleConfirmarForm, onError, submitUser)}
+        onSubmit={handleSubmit(handleConfirmarForm, onError)}
       >
         <ConteinerInput>
           <SubTitle>Nome completo: </SubTitle>
@@ -347,11 +344,10 @@ export const Form = () => {
       <DivBotoes>
         <Botao
           type="submit"
-          handleClick={handleSubmit(handleConfirmarForm, onError, submitUser)}
+          handleClick={handleSubmit(handleConfirmarForm, onError)}
         >
-          Cadastrar
+          <Link to='/'>Cadastrar</Link>
         </Botao>
-
         <BotaoLinkPaper href="/">Login</BotaoLinkPaper>
       </DivBotoes>
     </div>

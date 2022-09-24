@@ -36,11 +36,11 @@ function App() {
           <Global />
           <BodyStyled>
             <main>
-              <TrocaTemas>
               <AuthProvider>
+              <TrocaTemas>
                 <Rotas />
-              </AuthProvider>
               </TrocaTemas>
+              </AuthProvider>
             </main>
           </BodyStyled>
           <Global />

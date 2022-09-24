@@ -35,3 +35,7 @@ export const DivButtonsModalStld = styled.div`
   justify-content: space-between;
   gap: 10em;
 `;
+
+export const ImgStld = styled.img`
+  width: 6em;
+`

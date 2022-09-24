@@ -29,8 +29,8 @@ export const TrocaTemas = ({children}) => {
     
     return (
         <ContextoTema.Provider value={{ theme: thema, handleThema}}>
-            {children}
             <BotaoFiltroDevice handleClick={handleThema}>Mudar Tema</BotaoFiltroDevice>
+            {children}
         </ContextoTema.Provider>
     )
 

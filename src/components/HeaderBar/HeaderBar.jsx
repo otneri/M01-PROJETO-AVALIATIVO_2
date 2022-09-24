@@ -2,6 +2,7 @@ import { Logo } from "../../assets/img";
 import { BotaoLogin } from "../Botoes/Botao";
 import { useAuth } from "../../contexts/Autenticação/index";
 import { Div, HeaderStyled, TitleHeaderStyled } from "./HeaderBar.styled";
+import {Link} from 'react-router-dom'
 
 export const HeaderBar = () => {
   // const [aute] =useAuth()
@@ -14,7 +15,7 @@ export const HeaderBar = () => {
         
       </Div>
 
-      <BotaoLogin>login</BotaoLogin>
+      <BotaoLogin><Link to='/'>Login</Link></BotaoLogin>
     </HeaderStyled>
   );
 };

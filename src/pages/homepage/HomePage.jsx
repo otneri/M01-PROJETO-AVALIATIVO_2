@@ -18,7 +18,7 @@ import {
 } from "./HomePage.styled";
 import { Logo } from "../../assets/img";
 import { SubParagraph } from "../../components/SubTitle/SubTitulo";
-import { IconWeatherStld } from "../../components/Image/Imagem";
+
 
 export const HomePage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);

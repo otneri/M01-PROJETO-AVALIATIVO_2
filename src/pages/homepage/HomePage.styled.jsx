@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 
-export const HomeStyled = styled.main``;
+export const HomeStyled = styled.main`
+  height: 100vh;
+`;
 
 export const Paragraph = styled.p`
   color: ${({theme})=>theme.text.grey};
@@ -21,6 +23,7 @@ export const BotoesFiltroDevices = styled.div`
 `;
 
 export const GridListDevices = styled.section`
+  
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   grid-template-rows: 2fr 2fr 2fr;

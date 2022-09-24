@@ -4,7 +4,7 @@ export const SelectStld = styled.select`
   padding: 0.7em;
   width: 25em;
   &:hover {
-    border-color: ${(theme)=> theme.color.backgroundHeader};
+    border-color: ${({theme})=> theme.color.backgroundHeader};;
   }
 `;
 export const OptionStld = styled.option`

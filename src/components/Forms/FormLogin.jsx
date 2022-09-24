@@ -6,8 +6,9 @@ import { Botao } from "../Botoes/Botao";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 // FORMULARIO
 const validationSchema = yup.object({
@@ -28,42 +29,28 @@ export const FormLogin = () => {
   const headers = {
     "Content-Type": "application/json"
   }
+
+  const navigate = useNavigate()
+
+
   
-
-  const getPerfilValido = (body) => {
-    axios.post(efetuarLogin, body, headers)
-
-  }
-
   const handleConfirmarLogin= (valores) => {
     console.log(valores);
     axios.post(efetuarLogin, valores, headers)
-    .then((response) => {console.log(response)
-    .catch((error) => console.log("Ops, algo deu errado: " + error))})};
+    .then((response) => {
+      sessionStorage.setItem('Token', response?.data?.token)
+      console.log(response)})
+    .catch((erro)=> alert( erro?.response?.data?.error))
+    }
+    
+    
+  // const pegaToken = sessionStorage.setItem('token')
 
-  
-
-
-
-
-
-  // const getPerfilValido = (token, usuario, set) => {
-  //   fetch(`https://connectlab.onrender.com/users/${usuario}`, {
-  //     method: 'get',
-  //     headers: new Headers ({
-  //       Authorization: `Bearer ${token}`,
-  //     })
-  //   })
-  //   .then((response) => response.json())
-  //   .then((data) => {set(data)
-  //     return(data)}
-  //   )}
-
-// CONFIRMAR USER
 
 
 
 
+  
 
 
 
@@ -76,7 +63,7 @@ export const FormLogin = () => {
 
   return (
     <>
-      <FormStyle onSubmit={handleSubmit(handleConfirmarLogin, handleConfirmarLogin)}>
+      <FormStyle onSubmit={handleSubmit(handleConfirmarLogin)}>
         <ConteinerInput>
           <SubTitle>E-mail: </SubTitle>
           <Input {...register("email")} />
@@ -91,7 +78,7 @@ export const FormLogin = () => {
       </FormStyle>
 
       <DivBotoes>
-        <Botao handleClick={handleSubmit(handleConfirmarLogin, handleConfirmarLogin)}>Login</Botao>
+        <Botao handleClick={handleSubmit(handleConfirmarLogin)} navigate='/home'>Login</Botao>
 
         <SubTitle >Não tem conta? <Link to="/cadastro" style={linkStyld}>Cadastre-se</Link></SubTitle>
       </DivBotoes>
