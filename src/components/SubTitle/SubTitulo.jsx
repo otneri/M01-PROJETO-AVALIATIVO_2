@@ -14,6 +14,6 @@ SubTitle.propTypes = {
 };
 
 SubParagraph.propTypes = {
-  children: Proptypes.node,
+  children: Proptypes.node.isRequired,
   size: Proptypes.string,
 };

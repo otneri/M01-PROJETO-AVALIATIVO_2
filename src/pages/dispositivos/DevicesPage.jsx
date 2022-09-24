@@ -70,13 +70,7 @@ export const DevicesPage = () => {
         </DivButtonsModalStld>
       </ModalDevice>
       <DivDevicespgStld>
-        <Title>
-          
-
-          {/* {Object.values(wether).map((item, key) =>
-            item )} */}
-
-        </Title>
+        <Title>   </Title>
 
         <SubTitle>Nome do dispositivo</SubTitle>
 

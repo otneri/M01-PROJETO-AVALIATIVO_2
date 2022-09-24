@@ -4,33 +4,33 @@ import {temaDark,temaPrincipal} from '../../themes'
 import { BotaoFiltroDevice } from "../../components/Botoes/Botao";
 
 export const ContextoTema = React.createContext({
-    theme: temaDark,
+    thema: temaDark,
 });
 
 export const TrocaTemas = ({children}) => {
 
-    const [theme, setTheme] = useState([]);
+    const [thema, setThema] = useState([]);
   
   
-    const handleTheme = () => {
-        setTheme((prev) => {
-            const newTheme = prev === temaDark ? temaPrincipal : temaDark;
-            setTheme(newTheme)
-            return newTheme;
+    const handleThema = () => {
+        setThema((prev) => {
+            const newThema = prev === temaDark ? temaPrincipal : temaDark;
+            setThema(newThema)
+            return newThema;
 
         })
     }
 
-    console.log(theme);
-
-    const trocaTema = theme === 'dark'? temaDark:temaPrincipal 
     
 
+    const trocaTema = thema === temaDark ? temaDark:temaPrincipal 
+    
+    console.log(trocaTema);
     
     return (
-        <ContextoTema.Provider value={{theme: trocaTema, handleTheme}}>
+        <ContextoTema.Provider value={{ theme: thema, handleThema}}>
             {children}
-            <BotaoFiltroDevice handleClick={handleTheme}>Mudar Tema</BotaoFiltroDevice>
+            <BotaoFiltroDevice handleClick={handleThema}>Mudar Tema</BotaoFiltroDevice>
         </ContextoTema.Provider>
     )
 

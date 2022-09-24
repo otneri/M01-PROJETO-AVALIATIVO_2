@@ -14,13 +14,24 @@ import { useTema } from "./contexts/Temas/useTema";
 
 Modal.setAppElement("#root");
 
+// const [thema, setThema] = useState([]);
+
+// const handleThema = () => {
+//   setThema((prev) => {
+//       const newThema = prev === temaDark ? temaPrincipal : temaDark;
+//       setThema(newThema)
+//       return newThema;
+
+//   })
+
 function App() {
-  const {theme} = useTema()
-  
+  const {thema} = useTema()
+
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      {/* <BotaoFiltroDevice handleClick={handleThema}>BotaonoApp</BotaoFiltroDevice> */}
+      <ThemeProvider theme={thema}>
           <HeaderBar />
           <Global />
           <BodyStyled>

@@ -30,8 +30,8 @@ const validationSchema = yup.object({
   userAddress: yup.object({
     zipCode: yup
       .string("Apenas números!")
-      .required("Campo obrigatório")
-      .matches(CepDigitos, "Apenas números."),
+      .required("Campo obrigatório"),
+      // .matches(CepDigitos, "Apenas números."),
     street: yup.string().required("Campo obrigatório"),
     city: yup.string().required("Campo obrigatório"),
     state: yup.string().required("Campo obrigatório"),
@@ -51,10 +51,7 @@ export const Form = () => {
     setFocus,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
-  const handleConfirmarForm = (valores) => {
-    console.log(valores);
-    return JSON.stringify(valores);
-  };
+  
   function onError(erro) {
     console.log("erro: ", erro);
   }
@@ -78,17 +75,31 @@ export const Form = () => {
 
   // SOBE USER PARA API
 
-  const cadastrarUser = `https://connectlab.onrender.com`;
+  const cadastrarUser = `https://connectlab.onrender.com/auth/register`;
+  const headers =  {
+    "Content-Type": "application/json"
+  }
 
-
-  const submitUser = () => {
+  const submitUser = (body) => {
     axios
-      .post(`${cadastrarUser}/auth/register`, handleConfirmarForm)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => console.log("Ops, algo deu errado: " + error));
+      .post(cadastrarUser, body, headers)  
   };
+ 
+
+  const handleConfirmarForm = (valores) => {
+    console.log(valores);
+    submitUser(valores) 
+    .then((response) => {
+      console.log(response)})
+    .catch((error) =>  {console.log("Ops, algo deu errado: " + error)})
+    
+  };
+
+  
+
+
+  
+  
 
   // SOBE USER PARA API
 

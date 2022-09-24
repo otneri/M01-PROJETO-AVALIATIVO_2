@@ -6,7 +6,7 @@ import { Title } from "../../components/Titulo/Titulo";
 import { CadastroStyle } from "./Cadastro.styled";
 
 export const Cadastro = () => {
-  console.log('abestado');
+  
   return (
     <CadastroStyle>
       
