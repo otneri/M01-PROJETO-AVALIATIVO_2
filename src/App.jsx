@@ -35,13 +35,11 @@ function App() {
           <HeaderBar />
           <Global />
           <BodyStyled>
-            <main>
               <AuthProvider>
-              <TrocaTemas>
-                <Rotas />
-              </TrocaTemas>
+                <TrocaTemas>
+                  <Rotas />
+                </TrocaTemas>
               </AuthProvider>
-            </main>
           </BodyStyled>
           <Global />
       </ThemeProvider>

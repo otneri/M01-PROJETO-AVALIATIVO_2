@@ -5,7 +5,6 @@ import { LoginPageStyle } from "./LoginPage.styled";
 import { FormLogin } from "../../components/Forms/FormLogin";
 import { SubTitle } from "../../components/SubTitle/SubTitulo";
 // import { useState } from "react";
-// import { useAuth } from "../../contexts/Autenticação/index";
 
 export const LoginPage = () => {
   // const [input, setInput] = useState({

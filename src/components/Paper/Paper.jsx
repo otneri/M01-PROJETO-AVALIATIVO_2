@@ -37,7 +37,7 @@ Paper.propTypes = {
 };
 
 PaperListDevices.propTypes = {
-  children: Proptypes.node.isRequired,
+  children: Proptypes.node,
 };
 
 PaperDevice.propTypes = {

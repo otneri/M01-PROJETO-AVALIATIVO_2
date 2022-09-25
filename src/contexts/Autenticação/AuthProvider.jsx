@@ -1,39 +1,38 @@
-import { createContext, useState, useEffect } from "react";
+import {  useState } from "react";
+import {ContextAuth} from './ContextAuth'
 import PropTypes from "prop-types";
 
-export const ContextAuth = createContext();
+
 
 export const AuthProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState({
-    nome: "",
-  });
+  const [token, setToken] = useState(sessionStorage.getItem('Token'));
 
-  const handleLogin = ({ email, senha }) => {
-    console.log(email, senha);
-    setUsuario({ nome: "Otavio" });
-  };
+  // const handleLogin = ({ email, senha }) => {
+  //   console.log(email, senha);
+  //   setUsuario({ nome: "Otavio" });
+  // };
 
-  useEffect(() => {
-    const userStorage = localStorage.getItem("fullName");
-    if (userStorage) {
-      setUsuario(JSON.parse(userStorage));
-    } else {
-      setUsuario({
-        nome: "",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userStorage = localStorage.getItem("fullName");
+  //   if (userStorage) {
+  //     setUsuario(JSON.parse(userStorage));
+  //   } else {
+  //     setUsuario({
+  //       nome: "",
+  //     });
+  //   }
+  // }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("fullName");
-    setUsuario({
-      nome: "",
-    });
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("fullName");
+  //   setUsuario({
+  //     nome: "",
+  //   });
+  // };
 
   return (
     <ContextAuth.Provider
-      value={{ isAutenticado: !!usuario, handleLogin, handleLogout }}
+      value={{ token, setToken }}
     >
       {children}
     </ContextAuth.Provider>

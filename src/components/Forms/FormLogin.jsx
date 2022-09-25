@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import {ContextAuth} from '../../contexts/Autenticação/ContextAuth'
+import { useAuth } from "../../contexts/Autenticação/useAuth";
 
 // FORMULARIO
 const validationSchema = yup.object({
@@ -17,6 +19,9 @@ const validationSchema = yup.object({
 });
 
 export const FormLogin = () => {
+  const {setToken} = useAuth();
+  const navega = useNavigate();
+
   const {
     handleSubmit,
     register,
@@ -30,7 +35,7 @@ export const FormLogin = () => {
     "Content-Type": "application/json"
   }
 
-  const navigate = useNavigate()
+  
 
 
   
@@ -39,12 +44,24 @@ export const FormLogin = () => {
     axios.post(efetuarLogin, valores, headers)
     .then((response) => {
       sessionStorage.setItem('Token', response?.data?.token)
-      console.log(response)})
+      sessionStorage.setItem('User', response?.data?.user)
+      console.log(response)
+      return (response?.data?.token)
+    })
     .catch((erro)=> alert( erro?.response?.data?.error))
     }
     
     
-  // const pegaToken = sessionStorage.setItem('token')
+  const pegaToken = ()=>{
+   const {token} = handleConfirmarLogin();
+   if (token){
+    setToken(token);
+    return navega.push('/home')
+   };
+
+   
+
+  }
 
 
 
@@ -63,7 +80,7 @@ export const FormLogin = () => {
 
   return (
     <>
-      <FormStyle onSubmit={handleSubmit(handleConfirmarLogin)}>
+      <FormStyle onSubmit={handleSubmit(handleConfirmarLogin, pegaToken)}>
         <ConteinerInput>
           <SubTitle>E-mail: </SubTitle>
           <Input {...register("email")} />

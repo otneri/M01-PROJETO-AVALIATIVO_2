@@ -1,3 +1,4 @@
+
 import { Navigate, Route, Routes } from "react-router-dom";
 import {
   HomePage,
@@ -8,30 +9,37 @@ import {
   EditarPerfilPage,
 } from "../pages";
 import { RotaPrivada } from "./RotaPrivada";
-// import {} from "./RotaPrivada"
+
+
+
 
 export const Rotas = () => {
   return (
     <Routes>
+
       <Route
         path="/Home"
         element={
-          // <RotaPrivada>
-          <HomePage />
-          // </RotaPrivada>
-        }
-      />
-      ;
+          <RotaPrivada>
+            <HomePage />
+          </RotaPrivada>
+          }
+          />
+
       <Route path="/" element={<LoginPage />} />
+
       <Route path="/cadastro" element={<Cadastro />} />
+
       <Route
         path="/perfil"
         element={
-          <RotaPrivada>
-            <PerfilPage />
-          </RotaPrivada>
+            <RotaPrivada>
+              <PerfilPage />
+            </RotaPrivada>
+      
         }
       />
+
       <Route
         path="/perfilEdicao"
         element={
@@ -40,14 +48,16 @@ export const Rotas = () => {
           </RotaPrivada>
         }
       />
+
       <Route
         path="/devices"
         element={
-          // <RotaPrivada>
-          <DevicesPage />
-          // </RotaPrivada>
+          <RotaPrivada>
+            <DevicesPage />
+          </RotaPrivada>
         }
       />
+
       <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );

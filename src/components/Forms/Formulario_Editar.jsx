@@ -42,7 +42,7 @@ const validationSchema = yup.object({
   }),
 });
 
-export const Form = () => {
+export const FormEdita = () => {
   // Yup FORM
   const {
     handleSubmit,
@@ -75,23 +75,24 @@ export const Form = () => {
   // Yup FORM
 
   // SOBE USER PARA API
+  // const token2 = sessionStorage.getItem('Token');
+//   const userLogado = sessionStorage.getItem('Token')
+//   const id = userLogado.id; 
+  const editarUser = `https://connectlab.onrender.com/users/:632e7295ed8a7456e979f284`
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
 
-  const cadastrarUser = `https://connectlab.onrender.com/auth/register`;
-  const headers =  {
-    "Content-Type": "application/json"
+  const headers = {
+    "Authorization": `Bearer ${token}` ,
+	"Content-Type": "application/json"
   }
 
- 
-
-  const handleConfirmarForm = (valores) => {
-    console.log(valores, 'valores');
+  const handleAlterarCadastro = (valores) => {
+   
     axios
-    .post(cadastrarUser, valores, headers) 
+    .put(editarUser, valores, {headers}) 
     .then((response) => {
-      console.log(response, 'response')
-      alert('Usuário cadastrado!')
-    })
-    .catch((erro)=> alert( erro?.response?.data?.error))
+      console.log(response, 'response')})
+    .catch((erro)=> console.log( erro))
     
   };
 
@@ -105,7 +106,7 @@ export const Form = () => {
   return (
     <div>
       <FormStyle
-        onSubmit={handleSubmit(handleConfirmarForm, onError)}
+        onSubmit={handleSubmit(handleAlterarCadastro, onError)}
       >
         <ConteinerInput>
           <SubTitle>Nome completo: </SubTitle>
@@ -346,11 +347,11 @@ export const Form = () => {
       <DivBotoes>
         <Botao
           type="submit"
-          handleClick={handleSubmit(handleConfirmarForm, onError)}
+          handleClick={handleSubmit(handleAlterarCadastro, onError)}
         >
-          <Link to='/'>Cadastrar</Link>
+          Salvar
         </Botao>
-        <BotaoLinkPaper href="/">Login</BotaoLinkPaper>
+        
       </DivBotoes>
     </div>
   );

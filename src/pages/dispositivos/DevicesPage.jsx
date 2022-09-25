@@ -33,25 +33,31 @@ export const DevicesPage = () => {
 
   // LISTA DE DISPOSITIVOS
   const connectListaDevices = `https://connectlab.onrender.com/devices`;
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsYmVydGVpbnN0ZWluQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiQWxiZXJ0IEVpbnN0ZWluIiwiX2lkIjoiNjMyZDkyN2RlZDhhNzQ1NmU5Nzk0OTU2IiwiaWF0IjoxNjY0MDQ2NDMxfQ.dgJ-mKfajdU3WvjT0oqRZhXMtib-mEz4XfKxuWFWVDY'
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
+  // const token2 = sessionStorage.getItem('Token');
+
 
   const headers =  {
   "Authorization":`Bearer ${token}`
   };
 
   const [devices, setDevices] = useState({});
-
+  
   const getListaDevices = () => {
     axios.get(connectListaDevices, {headers})
     .then((resp) => {
       console.log(resp.data, 'getdevices');
       setDevices(resp.data);
+      console.log(devices);
       
     })
     .catch((err) => console.log(err))
   }
 
   console.log('device fora', devices)
+  // LISTA DE DISPOSITIVOS
+
+
 
   
  
@@ -77,7 +83,7 @@ export const DevicesPage = () => {
         </DivButtonsModalStld>
       </ModalDevice>
       <DivDevicespgStld>
-        <Title>   </Title>
+        <Title>Devices Storage</Title>
 
         <SubTitle>Nome do dispositivo</SubTitle>
 
@@ -89,7 +95,7 @@ export const DevicesPage = () => {
 
       <GridListDevices>
 
-        {devices.map((device, id) => (
+      {/* {devices.map((device, id) => (
           <Paper key={id}>
             <ImgStld src={device.photoUrl} alt="device" />
             <Paragraph>{device.name}</Paragraph>
@@ -97,11 +103,8 @@ export const DevicesPage = () => {
           </Paper>
 
         ))}
+           */}
           
-        
-
-            
-       
       </GridListDevices>
     </ConteinerStld>
   );

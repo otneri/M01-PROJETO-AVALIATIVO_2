@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const PerfilPageStyle = styled.section`
-  color: ${(theme)=>theme.text.orangedark};
+  color: ${({theme})=>theme.text.orangedark};
+  height: 100vh;
   font-weight: bold;
   font-size: medium;
 `;
