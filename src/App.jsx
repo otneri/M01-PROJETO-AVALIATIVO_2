@@ -11,39 +11,32 @@ import { useState } from "react";
 import { BotaoFiltroDevice } from "./components/Botoes/Botao";
 import { TrocaTemas } from "./contexts/Temas/Temas";
 import { useTema } from "./contexts/Temas/useTema";
+import { Logado } from "./contexts/Logado/Logado";
 
 Modal.setAppElement("#root");
 
-// const [thema, setThema] = useState([]);
-
-// const handleThema = () => {
-//   setThema((prev) => {
-//       const newThema = prev === temaDark ? temaPrincipal : temaDark;
-//       setThema(newThema)
-//       return newThema;
-
-//   })
 
 function App() {
   const {thema} = useTema()
 
 
   return (
+    <ThemeProvider theme={temaDark}>
     <BrowserRouter>
-      {/* <BotaoFiltroDevice handleClick={handleThema}>BotaonoApp</BotaoFiltroDevice> */}
-      <ThemeProvider theme={thema}>
-          <HeaderBar />
-          <Global />
-          <BodyStyled>
-              <AuthProvider>
-                <TrocaTemas>
-                  <Rotas />
-                </TrocaTemas>
-              </AuthProvider>
-          </BodyStyled>
-          <Global />
-      </ThemeProvider>
+          <AuthProvider>
+          <Logado>
+            <HeaderBar />
+            <Global />
+           <TrocaTemas>
+            <BodyStyled>
+                    <Rotas />
+            </BodyStyled>
+           </TrocaTemas>
+            <Global />
+          </Logado>
+          </AuthProvider>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

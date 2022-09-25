@@ -41,7 +41,7 @@ export const Rotas = () => {
       />
 
       <Route
-        path="/perfilEdicao"
+        path="/editarPerfil"
         element={
           <RotaPrivada>
             <EditarPerfilPage />

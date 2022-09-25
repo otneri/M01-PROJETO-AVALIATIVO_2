@@ -18,10 +18,13 @@ import { Select } from "../../components/SelectInput/SelectInput";
 import { ModalDevice } from "../../components/Modais/ModalDevice";
 import { ConteinerInput } from "../../components/Inputs/InputComp.styled";
 import axios from "axios";
+import { useLogado } from "../../contexts/Logado/useLogado";
+import { useAuth } from "../../contexts/Autenticação/useAuth";
 
 
 export const DevicesPage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const {token} = useAuth()
   
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -33,8 +36,8 @@ export const DevicesPage = () => {
 
   // LISTA DE DISPOSITIVOS
   const connectListaDevices = `https://connectlab.onrender.com/devices`;
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
-  // const token2 = sessionStorage.getItem('Token');
+  // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
+  // // const token2 = sessionStorage.getItem('Token');
 
 
   const headers =  {

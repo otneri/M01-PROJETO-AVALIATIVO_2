@@ -3,9 +3,11 @@ import { BotaoLogin } from "../Botoes/Botao";
 import { useAuth } from "../../contexts/Autenticação/index";
 import { Div, HeaderStyled, TitleHeaderStyled } from "./HeaderBar.styled";
 import {Link} from 'react-router-dom'
+import { Navbar } from "../../components/NavbarComp/NavbarComp";
 
 export const HeaderBar = () => {
-  // const [aute] =useAuth()
+  const {token} =useAuth()
+  
 
   return (
     <HeaderStyled>
@@ -15,7 +17,8 @@ export const HeaderBar = () => {
         
       </Div>
 
-      <BotaoLogin><Link to='/'>Login</Link></BotaoLogin>
+      {token?<Navbar/>:<BotaoLogin><Link to='/'>Login</Link></BotaoLogin>}
+      
     </HeaderStyled>
   );
 };

@@ -6,11 +6,12 @@ import { Botao } from "../Botoes/Botao";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import {ContextAuth} from '../../contexts/Autenticação/ContextAuth'
 import { useAuth } from "../../contexts/Autenticação/useAuth";
+import { useLogado } from "../../contexts/Logado/useLogado";
 
 // FORMULARIO
 const validationSchema = yup.object({
@@ -19,8 +20,9 @@ const validationSchema = yup.object({
 });
 
 export const FormLogin = () => {
-  const {setToken} = useAuth();
-  const navega = useNavigate();
+  const {token,setToken} = useAuth();
+  const {user, setUser} = useLogado();
+  
 
   const {
     handleSubmit,
@@ -44,26 +46,23 @@ export const FormLogin = () => {
     axios.post(efetuarLogin, valores, headers)
     .then((response) => {
       sessionStorage.setItem('Token', response?.data?.token)
-      sessionStorage.setItem('User', response?.data?.user)
-      console.log(response)
-      return (response?.data?.token)
+      setToken(response?.data?.token)
+      sessionStorage.setItem('User', response?.data?.user?._id)
+      setUser(response?.data?.user?._id)
+      // sessionStorage.setItem('Cidade',response?.data?.user? )
+      sessionStorage.setItem('Cidade', response?.data?.user?.userAddress?.city);
+      console.log(user, 'user');
+      console.log(token, 'token');
     })
     .catch((erro)=> alert( erro?.response?.data?.error))
     }
     
     
-  const pegaToken = ()=>{
-   const {token} = handleConfirmarLogin();
-   if (token){
-    setToken(token);
-    return navega.push('/home')
-   };
+  
 
    
 
-  }
-
-
+  
 
 
 
@@ -78,27 +77,28 @@ export const FormLogin = () => {
     }
 
 
-  return (
-    <>
-      <FormStyle onSubmit={handleSubmit(handleConfirmarLogin, pegaToken)}>
-        <ConteinerInput>
-          <SubTitle>E-mail: </SubTitle>
-          <Input {...register("email")} />
-          <SpanError>{errors?.email?.message}</SpanError>
-        </ConteinerInput>
-
-        <ConteinerInput>
-          <SubTitle>Senha: </SubTitle>
-          <Input {...register("password")} type="password" />
-          <SpanError>{errors?.password?.message}</SpanError>
-        </ConteinerInput>
-      </FormStyle>
-
-      <DivBotoes>
-        <Botao handleClick={handleSubmit(handleConfirmarLogin)} navigate='/home'>Login</Botao>
-
-        <SubTitle >Não tem conta? <Link to="/cadastro" style={linkStyld}>Cadastre-se</Link></SubTitle>
-      </DivBotoes>
-    </>
-  );
-};
+ 
+    return (
+      <>
+        <FormStyle onSubmit={handleSubmit(handleConfirmarLogin)}>
+          <ConteinerInput>
+            <SubTitle>E-mail: </SubTitle>
+            <Input {...register("email")} />
+            <SpanError>{errors?.email?.message}</SpanError>
+          </ConteinerInput>
+  
+          <ConteinerInput>
+            <SubTitle>Senha: </SubTitle>
+            <Input {...register("password")} type="password" />
+            <SpanError>{errors?.password?.message}</SpanError>
+          </ConteinerInput>
+        </FormStyle>
+  
+        <DivBotoes>
+          <Botao handleClick={handleSubmit(handleConfirmarLogin)} > Login{token? <Link to='/home'/>:''} </Botao>
+  
+          <SubTitle >Não tem conta? <Link to="/cadastro" style={linkStyld}>Cadastre-se</Link></SubTitle>
+        </DivBotoes>
+      </>
+    );
+  };

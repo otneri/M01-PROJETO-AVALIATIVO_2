@@ -1,5 +1,6 @@
 // import {useLocation} from 'react-router-dom'
 import { LiStyled, NavStyled, UlStyled, AStyled } from "./NavbarComp.styled";
+import {Link} from 'react-router-dom'
 
 export const Navbar = () => {
   // const { pathname } = useLocation();
@@ -8,15 +9,15 @@ export const Navbar = () => {
     <NavStyled>
       <UlStyled>
         <LiStyled>
-          <AStyled href="/">Inicio</AStyled>
+          <Link to='/home'>Inicio</Link>
         </LiStyled>
 
         <LiStyled>
-          <AStyled href="/">Dispositivos</AStyled>
+          <Link to='/devices'>Dispositivos</Link>
         </LiStyled>
 
         <LiStyled>
-          <AStyled href="/">Perfil</AStyled>
+          <Link to='/perfil'>Perfil</Link>
         </LiStyled>
       </UlStyled>
     </NavStyled>

@@ -8,7 +8,9 @@ import { PhoneNumber, FullName, CepDigitos } from "../../utils/validations";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { useLogado } from '../../contexts/Logado/useLogado'
+import { useAuth } from '../../contexts/Autenticação/useAuth'
 
 
 const validationSchema = yup.object({
@@ -43,7 +45,12 @@ const validationSchema = yup.object({
 });
 
 export const FormEdita = () => {
+  const {user} = useLogado();
+  console.log(user, 'user');
+  const {token} = useAuth()
+  console.log(token);
   // Yup FORM
+  
   const {
     handleSubmit,
     register,
@@ -72,22 +79,31 @@ export const FormEdita = () => {
         setFocus("userAddress.number");
       });
   };
-  // Yup FORM
 
-  // SOBE USER PARA API
-  // const token2 = sessionStorage.getItem('Token');
-//   const userLogado = sessionStorage.getItem('Token')
-//   const id = userLogado.id; 
-  const editarUser = `https://connectlab.onrender.com/users/:632e7295ed8a7456e979f284`
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
+  const editarUser = `https://connectlab.onrender.com/users/:${user}`
+  // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
+
+ const headersBuscaUser = {
+  "Authorization": `Bearer ${token}` ,
+ }
+ const handleAutofilDados = (valores) => { 
+  axios
+  .get( editarUser ,{headersBuscaUser} ) 
+  .then((response) => {
+    console.log(response, 'response')})
+  .catch((erro)=> console.log( erro))
+  
+};
 
   const headers = {
     "Authorization": `Bearer ${token}` ,
-	"Content-Type": "application/json"
+	  "Content-Type": "application/json"
   }
 
-  const handleAlterarCadastro = (valores) => {
-   
+  
+
+
+  const handleAlterarCadastro = (valores) => { 
     axios
     .put(editarUser, valores, {headers}) 
     .then((response) => {

@@ -18,9 +18,15 @@ import {
 } from "./HomePage.styled";
 import { Logo } from "../../assets/img";
 import { SubParagraph } from "../../components/SubTitle/SubTitulo";
+import { useLogado } from "../../contexts/Logado/useLogado";
+import { useAuth } from "../../contexts/Autenticação/useAuth";
+import axios from "axios";
 
 
 export const HomePage = () => {
+  const {user} = useLogado()
+  const  {token} = useAuth();
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -50,7 +56,7 @@ export const HomePage = () => {
   };
   
 
-  const city = 'Ribeirão Pires';
+  const city = sessionStorage.getItem('Cidade')
   const [wether, setWether] = useState([]);
   
   useEffect(() => {
@@ -62,7 +68,6 @@ export const HomePage = () => {
   const getWetherData = async() => {
     const dados = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`)
     const converter= await dados.json();
-    console.log(converter);
     setWether ({
       nome: converter.name,
       temperatura: `${parseInt(converter.main.temp) }`,
@@ -73,10 +78,24 @@ export const HomePage = () => {
       condicao: converter.weather[0].description,
       icone: `http://openweathermap.org/img/wn/${converter.weather[0].icon}.png`
     })}
-    console.log(wether);
+    
+    
+    const connectListaDevices = `https://connectlab.onrender.com/userDevices/user/:${user}`
+    const headers = {
+      "Authorization": `Bearer ${token}`
+    }
+
+    const getDevicesUser = () => {
+      axios.get(connectListaDevices, {headers})
+      .then((resp) => {
+        console.log(resp.data, 'getdevices') 
+      })
+      .catch((err) => console.log(err))
+    }
+
 
   return (
-    <HomeStyled onLoad={getWetherData} >
+    <HomeStyled onLoad={(getWetherData, getDevicesUser)} >
       
       <Modal
         isOpen={modalIsOpen}
