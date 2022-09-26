@@ -16,7 +16,7 @@ export const LiStyled = styled.li`
   list-style: none;
 `;
 export const AStyled = styled.a`
-  color: ${({theme})=> theme.text.white};
+  color: ${({ theme }) => theme.text.white};
   text-decoration: none;
 
   &:hover {

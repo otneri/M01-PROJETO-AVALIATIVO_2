@@ -10,36 +10,41 @@ import {
   TextoMenor,
   Line,
 } from "./PerfilPage.styled";
-import { Logo } from "../../assets/img";
-
+import { useDadosUser } from "../../contexts/dadosUser/useDadosUser";
+import { Link } from "react-router-dom";
 
 export const PerfilPage = () => {
+  const { userdados } = useDadosUser();
+  console.log(userdados);
+
   return (
     <PerfilPageStyle>
-      
       <Paper>
         <Title>Meu Perfil</Title>
         <ConteinerProfileStyled>
-          <Logo />
+          <img src={userdados.photo} alt='fotoperfil'/>
           <DivPerfil>
-            <TextoMaior>Nome Completo</TextoMaior>
+            <TextoMaior>{userdados.fullName}</TextoMaior>
             <SubDivPerfil>
-              <TextoMenor>email@email.com -</TextoMenor>
-              <TextoMenor>(46) 99999-9999</TextoMenor>
+              <TextoMenor>{userdados.email} </TextoMenor>
+              <TextoMenor>{userdados.phone}</TextoMenor>
             </SubDivPerfil>
           </DivPerfil>
         </ConteinerProfileStyled>
 
         <DivPerfil>
-          <TextoMaior>Endereço</TextoMaior>
+          <TextoMaior>{userdados.userAddress.city}</TextoMaior>
           <Line />
-          <TextoMenor>85500-000</TextoMenor>
+          <TextoMenor>{userdados.userAddress.zipCode}</TextoMenor>
           <TextoMenor>
-            Av. Tupi, 5790 - Ap 180 - Centro - Pato Branco - PR{" "}
+            {userdados.userAddress.street}, {userdados.userAddress.number} -
+            {userdados.userAddress.complement} -
+            {userdados.userAddress.neighborhood} - {userdados.userAddress.city}
+            - {userdados.userAddress.state}
           </TextoMenor>
         </DivPerfil>
 
-        <Botao>Editar</Botao>
+        <Botao><Link to='/editarPerfil'>Editar</Link></Botao>
         <BotaoLinkPaper>Sair</BotaoLinkPaper>
       </Paper>
     </PerfilPageStyle>

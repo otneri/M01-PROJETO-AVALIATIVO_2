@@ -8,8 +8,7 @@ import { PhoneNumber, FullName, CepDigitos } from "../../utils/validations";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import {Link} from 'react-router-dom'
-
+import { Link } from "react-router-dom";
 
 const validationSchema = yup.object({
   fullName: yup
@@ -29,10 +28,8 @@ const validationSchema = yup.object({
     .required("Campo obrigatório")
     .oneOf([yup.ref("password"), null], "Senha incompatível"),
   userAddress: yup.object({
-    zipCode: yup
-      .string("Apenas números!")
-      .required("Campo obrigatório"),
-      // .matches(CepDigitos, "Apenas números."),
+    zipCode: yup.string("Apenas números!").required("Campo obrigatório"),
+    // .matches(CepDigitos, "Apenas números."),
     street: yup.string().required("Campo obrigatório"),
     city: yup.string().required("Campo obrigatório"),
     state: yup.string().required("Campo obrigatório"),
@@ -52,7 +49,6 @@ export const Form = () => {
     setFocus,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
-  
   function onError(erro) {
     console.log("erro: ", erro);
   }
@@ -77,36 +73,26 @@ export const Form = () => {
   // SOBE USER PARA API
 
   const cadastrarUser = `https://connectlab.onrender.com/auth/register`;
-  const headers =  {
-    "Content-Type": "application/json"
-  }
-
- 
-
-  const handleConfirmarForm = (valores) => {
-    console.log(valores, 'valores');
-    axios
-    .post(cadastrarUser, valores, headers) 
-    .then((response) => {
-      console.log(response, 'response')
-      alert('Usuário cadastrado!')
-    })
-    .catch((erro)=> alert( erro?.response?.data?.error))
-    
+  const headers = {
+    "Content-Type": "application/json",
   };
 
-
-
-  
-  
+  const handleConfirmarForm = (valores) => {
+    console.log(valores, "valores");
+    axios
+      .post(cadastrarUser, valores, headers)
+      .then((response) => {
+        console.log(response, "response");
+        alert("Usuário cadastrado!");
+      })
+      .catch((erro) => alert(erro?.response?.data?.error));
+  };
 
   // SOBE USER PARA API
 
   return (
     <div>
-      <FormStyle
-        onSubmit={handleSubmit(handleConfirmarForm, onError)}
-      >
+      <FormStyle onSubmit={handleSubmit(handleConfirmarForm, onError)}>
         <ConteinerInput>
           <SubTitle>Nome completo: </SubTitle>
           {errors?.fullName?.type ? (
@@ -348,7 +334,7 @@ export const Form = () => {
           type="submit"
           handleClick={handleSubmit(handleConfirmarForm, onError)}
         >
-          <Link to='/'>Cadastrar</Link>
+          <Link to="/">Cadastrar</Link>
         </Botao>
         <BotaoLinkPaper href="/">Login</BotaoLinkPaper>
       </DivBotoes>

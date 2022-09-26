@@ -8,10 +8,9 @@ import { PhoneNumber, FullName, CepDigitos } from "../../utils/validations";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import {Link} from 'react-router-dom';
-import { useLogado } from '../../contexts/Logado/useLogado'
-import { useAuth } from '../../contexts/Autenticação/useAuth'
-
+import { Link } from "react-router-dom";
+import { useLogado } from "../../contexts/Logado/useLogado";
+import { useAuth } from "../../contexts/Autenticação/useAuth";
 
 const validationSchema = yup.object({
   fullName: yup
@@ -31,10 +30,8 @@ const validationSchema = yup.object({
     .required("Campo obrigatório")
     .oneOf([yup.ref("password"), null], "Senha incompatível"),
   userAddress: yup.object({
-    zipCode: yup
-      .string("Apenas números!")
-      .required("Campo obrigatório"),
-      // .matches(CepDigitos, "Apenas números."),
+    zipCode: yup.string("Apenas números!").required("Campo obrigatório"),
+    // .matches(CepDigitos, "Apenas números."),
     street: yup.string().required("Campo obrigatório"),
     city: yup.string().required("Campo obrigatório"),
     state: yup.string().required("Campo obrigatório"),
@@ -45,12 +42,12 @@ const validationSchema = yup.object({
 });
 
 export const FormEdita = () => {
-  const {user} = useLogado();
-  console.log(user, 'user');
-  const {token} = useAuth()
+  const { user } = useLogado();
+  console.log(user, "user");
+  const { token } = useAuth();
   console.log(token);
   // Yup FORM
-  
+
   const {
     handleSubmit,
     register,
@@ -59,7 +56,6 @@ export const FormEdita = () => {
     setFocus,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
-  
   function onError(erro) {
     console.log("erro: ", erro);
   }
@@ -80,50 +76,33 @@ export const FormEdita = () => {
       });
   };
 
-  const editarUser = `https://connectlab.onrender.com/users/:${user}`
+  const editarUser = `https://connectlab.onrender.com/users/:${user}`;
   // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXZpb25lcmk0N0BnbWFpbC5jb20iLCJmdWxsTmFtZSI6IkF1Z3VzdG8gUmliZWlybyBOZXJpIiwiX2lkIjoiNjMyZTcyOTVlZDhhNzQ1NmU5NzlmMjg0IiwiaWF0IjoxNjY0MTA4NDI0fQ.2N3a7EOYvlnLoYckj99GoRRxEN6rExyDFOk0YC5dQ0o'
 
- const headersBuscaUser = {
-  "Authorization": `Bearer ${token}` ,
- }
- const handleAutofilDados = (valores) => { 
-  axios
-  .get( editarUser ,{headersBuscaUser} ) 
-  .then((response) => {
-    console.log(response, 'response')})
-  .catch((erro)=> console.log( erro))
-  
-};
+  const headersBuscaUser = {
+    Authorization: `Bearer ${token}`,
+  };
+ 
 
   const headers = {
-    "Authorization": `Bearer ${token}` ,
-	  "Content-Type": "application/json"
-  }
-
-  
-
-
-  const handleAlterarCadastro = (valores) => { 
-    axios
-    .put(editarUser, valores, {headers}) 
-    .then((response) => {
-      console.log(response, 'response')})
-    .catch((erro)=> console.log( erro))
-    
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
   };
 
-
-
-  
-  
+  const handleAlterarCadastro = (valores) => {
+    axios
+      .put(editarUser, valores, { headers })
+      .then((response) => {
+        console.log(response, "response");
+      })
+      .catch((erro) => alert(erro?.response?.data?.error));
+  };
 
   // SOBE USER PARA API
 
   return (
     <div>
-      <FormStyle
-        onSubmit={handleSubmit(handleAlterarCadastro, onError)}
-      >
+      <FormStyle onSubmit={handleSubmit( onError, handleAlterarCadastro)}>
         <ConteinerInput>
           <SubTitle>Nome completo: </SubTitle>
           {errors?.fullName?.type ? (
@@ -367,7 +346,6 @@ export const FormEdita = () => {
         >
           Salvar
         </Botao>
-        
       </DivBotoes>
     </div>
   );

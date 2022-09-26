@@ -1,11 +1,10 @@
-import {Form} from '../../components/Forms/Formulario'
-import {Paper} from '../../components/Paper/Paper'
-import {Title} from '../../components/Titulo/Titulo'
-import {Botao, BotaoLinkPaper} from '../../components/Botoes/Botao'
-import { PerfilEditarStyled } from './PerfilEditar.styled'
-import axios from 'axios'
-import { FormEdita } from '../../components/Forms/Formulario_Editar'
-
+import { Form } from "../../components/Forms/Formulario";
+import { Paper } from "../../components/Paper/Paper";
+import { Title } from "../../components/Titulo/Titulo";
+import { Botao, BotaoLinkPaper } from "../../components/Botoes/Botao";
+import { PerfilEditarStyled } from "./PerfilEditar.styled";
+import axios from "axios";
+import { FormEdita } from "../../components/Forms/Formulario_Editar";
 
 // CONFIRMAR USER
 // const editarPerfil = `https://connectlab.onrender.com/users/:id`
@@ -13,9 +12,6 @@ import { FormEdita } from '../../components/Forms/Formulario_Editar'
 //     "Authorization": "Bearer token",
 // 	"Content-Type": "application/json"
 // }
-
-
-
 
 // const handleDadosAnteriores= (valores) => {
 //   console.log(valores);
@@ -25,20 +21,16 @@ import { FormEdita } from '../../components/Forms/Formulario_Editar'
 //     })
 //   .catch((erro)=> alert( erro))
 //   }
-  
-
 
 export const EditarPerfilPage = () => {
-    
+  return (
+    <PerfilEditarStyled>
+      <Paper>
+        <Title>Meu perfil</Title>
+        <FormEdita />
 
-    return (
-        <PerfilEditarStyled>
-            <Paper>
-                <Title>Meu perfil</Title>
-                <FormEdita/>
-               
-                <BotaoLinkPaper href='/home'>Cancelar</BotaoLinkPaper>
-            </Paper>
-        </PerfilEditarStyled>
-    )
-}
+        <BotaoLinkPaper href="/home">Cancelar</BotaoLinkPaper>
+      </Paper>
+    </PerfilEditarStyled>
+  );
+};

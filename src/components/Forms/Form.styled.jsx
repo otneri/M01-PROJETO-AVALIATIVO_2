@@ -8,7 +8,7 @@ export const FormStyle = styled.form`
 `;
 
 export const SpanError = styled.span`
-  color: ${({theme})=> theme.color.error};
+  color: ${({ theme }) => theme.color.error};
 `;
 
 export const DivBotoes = styled.div`
@@ -21,7 +21,7 @@ export const InputLogin = styled.input`
   padding: 0.7em;
   width: 25em;
   &:hover {
-    border-color: ${({theme})=> theme.color.backgroundHeader};
+    border-color: ${({ theme }) => theme.color.backgroundHeader};
   }
   border-style: solid;
 `;

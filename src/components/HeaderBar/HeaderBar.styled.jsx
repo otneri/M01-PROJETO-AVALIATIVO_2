@@ -6,7 +6,7 @@ export const HeaderStyled = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({theme})=> theme.color.backgroundHeader};
+  background-color: ${({ theme }) => theme.color.backgroundHeader};
   gap: 5vh;
 `;
 

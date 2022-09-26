@@ -1,4 +1,3 @@
-
 import { Navigate, Route, Routes } from "react-router-dom";
 import {
   HomePage,
@@ -10,21 +9,17 @@ import {
 } from "../pages";
 import { RotaPrivada } from "./RotaPrivada";
 
-
-
-
 export const Rotas = () => {
   return (
     <Routes>
-
       <Route
         path="/Home"
         element={
           <RotaPrivada>
             <HomePage />
           </RotaPrivada>
-          }
-          />
+        }
+      />
 
       <Route path="/" element={<LoginPage />} />
 
@@ -33,10 +28,9 @@ export const Rotas = () => {
       <Route
         path="/perfil"
         element={
-            <RotaPrivada>
-              <PerfilPage />
-            </RotaPrivada>
-      
+          <RotaPrivada>
+            <PerfilPage />
+          </RotaPrivada>
         }
       />
 

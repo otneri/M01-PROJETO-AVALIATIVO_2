@@ -11,7 +11,7 @@ export const ModalDevice = ({ isOpen, onRequestClose, style, children }) => {
       width: "max-content",
       marginRight: "-50%",
       transform: "translate(-40%, -10%)",
-      background: `${(theme)=> theme.color.backgroundPrincipal}`,
+      background: `${(theme) => theme.color.backgroundPrincipal}`,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

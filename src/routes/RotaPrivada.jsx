@@ -1,4 +1,3 @@
-
 import { useAuth } from "../contexts/index";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";

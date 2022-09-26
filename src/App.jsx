@@ -12,30 +12,32 @@ import { BotaoFiltroDevice } from "./components/Botoes/Botao";
 import { TrocaTemas } from "./contexts/Temas/Temas";
 import { useTema } from "./contexts/Temas/useTema";
 import { Logado } from "./contexts/Logado/Logado";
+import { DadosProvider } from "./contexts/dadosUser/dadosUser.Provider";
 
 Modal.setAppElement("#root");
 
-
 function App() {
-  const {thema} = useTema()
-
+  const { thema } = useTema();
 
   return (
-    <ThemeProvider theme={temaDark}>
-    <BrowserRouter>
-          <AuthProvider>
+    <ThemeProvider theme={temaPrincipal}>
+      <BrowserRouter>
+        <AuthProvider>
+        <DadosProvider>
+
           <Logado>
             <HeaderBar />
             <Global />
-           <TrocaTemas>
-            <BodyStyled>
-                    <Rotas />
-            </BodyStyled>
-           </TrocaTemas>
+            <TrocaTemas>
+              <BodyStyled>
+                <Rotas />
+              </BodyStyled>
+            </TrocaTemas>
             <Global />
           </Logado>
-          </AuthProvider>
-    </BrowserRouter>
+          </DadosProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

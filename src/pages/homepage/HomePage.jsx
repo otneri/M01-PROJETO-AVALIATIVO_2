@@ -21,11 +21,11 @@ import { SubParagraph } from "../../components/SubTitle/SubTitulo";
 import { useLogado } from "../../contexts/Logado/useLogado";
 import { useAuth } from "../../contexts/Autenticação/useAuth";
 import axios from "axios";
-
+import { PaperStyled, DivPaperDeviceStyled, Comodos } from "../../components/Paper/Paper.styled";
 
 export const HomePage = () => {
-  const {user} = useLogado()
-  const  {token} = useAuth();
+  const { user } = useLogado();
+  const { token } = useAuth();
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -54,49 +54,49 @@ export const HomePage = () => {
       gap: "1em",
     },
   };
-  
 
-  const city = sessionStorage.getItem('Cidade')
+  const city = sessionStorage.getItem("Cidade");
   const [wether, setWether] = useState([]);
-  
+  const [meusdevices, setMeusdevices] = useState([]);
+
   useEffect(() => {
-    getWetherData()
+    getWetherData();
+  }, []);
 
-  }, [])
-  
-
-  const getWetherData = async() => {
-    const dados = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`)
-    const converter= await dados.json();
-    setWether ({
+  const getWetherData = async () => {
+    const dados = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city},br&units=metric&APPID=d5151cdb3fa13b265ad28b66e3220361`,
+    );
+    const converter = await dados.json();
+    setWether({
       nome: converter.name,
-      temperatura: `${parseInt(converter.main.temp) }`,
+      temperatura: `${parseInt(converter.main.temp)}`,
       umidade: `${converter.main.humidity}%`,
-      velocidade: `${converter.wind.speed} Km/h`, 
-      sensacao: `${parseInt(converter.main.feels_like) }`,
+      velocidade: `${converter.wind.speed} Km/h`,
+      sensacao: `${parseInt(converter.main.feels_like)}`,
       pais: `${converter.sys.country}`,
       condicao: converter.weather[0].description,
-      icone: `http://openweathermap.org/img/wn/${converter.weather[0].icon}.png`
-    })}
-    
-    
-    const connectListaDevices = `https://connectlab.onrender.com/userDevices/user/:${user}`
-    const headers = {
-      "Authorization": `Bearer ${token}`
-    }
+      icone: `http://openweathermap.org/img/wn/${converter.weather[0].icon}.png`,
+    });
+  };
 
-    const getDevicesUser = () => {
-      axios.get(connectListaDevices, {headers})
+  const connectListaDevices = `https://connectlab.onrender.com/userDevices/user/:${user}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  const getDevicesUser = () => {
+    axios
+      .get(connectListaDevices, { headers })
       .then((resp) => {
-        console.log(resp.data, 'getdevices') 
+        setMeusdevices(resp.data);
+        console.log(resp);
       })
-      .catch((err) => console.log(err))
-    }
-
+      .catch((err) => console.log(err));
+  };
 
   return (
-    <HomeStyled onLoad={(getWetherData, getDevicesUser)} >
-      
+    <HomeStyled onLoad={(getWetherData, getDevicesUser)}>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -122,14 +122,15 @@ export const HomePage = () => {
 
       <Paper>
         <Title>{wether.temperatura}&deg; C</Title>
-        <Paragraph>{wether.nome}, {wether.pais} </Paragraph>
+        <Paragraph>
+          {wether.nome}, {wether.pais}{" "}
+        </Paragraph>
         <SubParagraph>
-          
           <Pparagraph>Sensação térmica: {wether.sensacao}&deg;C</Pparagraph>
           <Pparagraph>Velocidade do vento: {wether.velocidade}</Pparagraph>
           <Pparagraph>Umidade: {wether.umidade} </Pparagraph>
         </SubParagraph>
-          <IconeEstilizado src={wether.icone} alt='icone'/>
+        <IconeEstilizado src={wether.icone} alt="icone" />
       </Paper>
 
       <BotoesFiltroDevices>
@@ -139,12 +140,27 @@ export const HomePage = () => {
       </BotoesFiltroDevices>
 
       <GridListDevices>
+
+
         <PaperDevice handleclick={handleOpenModal} />
-        <PaperDevice />
-        <PaperDevice />
-        <PaperDevice />
-        <PaperDevice />
-        <PaperDevice />
+
+        {meusdevices.map((device, id) => (
+          
+        <PaperStyled key={id} onClick={()=>{}}>
+            <DivPaperDeviceStyled>
+            <Logo />
+            <div>
+              <Paragraph>asdas</Paragraph>
+              <Comodos>
+                <p>Casa</p> {`-`}
+                <p>Quarto</p> {`-`}
+                <p>ON</p>
+              </Comodos>
+            </div>
+            <BotaoOnOff>On</BotaoOnOff>
+          </DivPaperDeviceStyled>
+        </PaperStyled>
+    ))}
       </GridListDevices>
     </HomeStyled>
   );
